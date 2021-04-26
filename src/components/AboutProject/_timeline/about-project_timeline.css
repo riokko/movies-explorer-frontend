@@ -1,0 +1,11 @@
+@import url(./__1-week/about-project_timeline__1-week.css);
+@import url(./__4-weeks/about-project_timeline__4-weeks.css);
+@import url(./__backend/about-project_timeline__backend.css);
+@import url(./__frontend/about-project_timeline__frontend.css);
+
+.about-project_timeline {
+  display: flex;
+}
+.about-project_timeline:last-of-type {
+    padding-bottom: 110px;
+}

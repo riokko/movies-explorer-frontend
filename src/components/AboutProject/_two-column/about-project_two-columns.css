@@ -1,0 +1,10 @@
+@import url(./__text/about-project_two-columns__text.css);
+@import url(./__title/about-project_two-columns__title.css);
+
+.about-project_two-columns {
+    display: grid;
+    grid-area: auto;
+    grid-template-columns: 550px 550px;
+    grid-gap: 26px 40px;
+    margin-bottom: 100px;
+}

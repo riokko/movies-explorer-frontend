@@ -1,12 +1,12 @@
-.aboutProject_timeline__1-week {
+.about-project_timeline__backend {
     width: 20vw;
-    height: 36px;
-    background: #3DDC84;
+    height: 40px;
+    background: transparent;
     font-weight: normal;
     font-size: 14px;
     line-height: 1.21;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: #8B8B8B;
 }

@@ -1,12 +1,11 @@
-.aboutProject_timeline__backend {
-    width: 20vw;
-    height: 40px;
-    background: transparent;
+.about-project_timeline__4-weeks {
+    width: 80vw;
+    height: 36px;
+    background: #303030;
     font-weight: normal;
     font-size: 14px;
     line-height: 1.21;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #8B8B8B;
 }
