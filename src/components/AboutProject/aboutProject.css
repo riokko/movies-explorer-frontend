@@ -1,4 +1,6 @@
-@import url(./__title/aboutProject__title.css);
+@import url(./_timeline/aboutProject_timeline.css);
+@import url(./_two-column/aboutProject_two-columns.css);
+@import url(./__content/aboutProject__content.css);
 
 .aboutProject {
     background-color: #202020;
