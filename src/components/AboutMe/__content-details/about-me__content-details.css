@@ -1,0 +1,7 @@
+.about-me__content-details {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+

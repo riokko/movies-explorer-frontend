@@ -1,0 +1,8 @@
+.about-me__photo {
+    background-image: url(../../../images/about-me__photo.jpg);
+    background-size: 100%;
+    width: 270px;
+    height: 327px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}

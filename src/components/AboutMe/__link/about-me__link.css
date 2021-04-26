@@ -1,0 +1,9 @@
+.about-me__link {
+    text-decoration: none;
+    color: white;
+}
+
+.about-me__link:hover {
+    text-decoration: underline;
+    color: white;
+}

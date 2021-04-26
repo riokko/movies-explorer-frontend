@@ -1,0 +1,7 @@
+.about-me__content {
+    min-height: 327px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
