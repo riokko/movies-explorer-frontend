@@ -1,0 +1,5 @@
+@import url(./_header/row_header.css);
+
+.row {
+    padding: 0 70px;
+}

@@ -1,0 +1,8 @@
+@import url(../../vendor/normalize.css);
+@import url(../../vendor/fonts/fonts.css);
+
+@import url(../../components/AboutProject/aboutProject.css);
+@import url(../../components/Header/header.css);
+@import url(../../components/page/page.css);
+@import url(../../components/Promo/promo.css);
+@import url(../../components/Row/row.css);

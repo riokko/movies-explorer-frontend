@@ -1,0 +1,14 @@
+@import url(__content/page__content.css);
+
+.page {
+  min-width: 1140px;
+  max-width: 1600px;
+  margin: 0 auto;
+  color: white;
+  font-family: "Inter", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}

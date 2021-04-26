@@ -1,0 +1,9 @@
+.aboutProject__title {
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 1.23;
+    letter-spacing: -0.04em;
+    margin-bottom: 94px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid white;
+}
