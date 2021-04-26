@@ -9,9 +9,9 @@ function Header() {
           <div className="logo header__logo"/>
           <div className="header__nav">
             <div>Регистрация</div>
-            <button className="header__button">Войти</button>
+            <button className="header__button" type="button">Войти</button>
           </div>
-        </div>{" "}
+        </div>
       </Row>
     </header>
   );

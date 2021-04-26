@@ -11,7 +11,7 @@ function Promo() {
         <h3 className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </h3>
-        <button className="promo__button">Узнать больше</button>
+        <button className="promo__button" type="button">Узнать больше</button>
       </Row>
     </div>
   );

@@ -35,10 +35,7 @@ function AboutMe() {
           </div>
           <div className="about-me__photo" />
         </div>
-        <h3>Портфолио</h3>
-        <div>
-          <a href="#">Статичный сайт</a>
-        </div>
+
       </Row>
     </div>
   );
