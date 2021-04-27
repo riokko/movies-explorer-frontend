@@ -15,10 +15,10 @@ function Promo() {
               создателя.
             </h3>
           </div>
+          <button className="promo__button" type="button">
+            Узнать больше
+          </button>
         </div>
-        <button className="promo__button" type="button">
-          Узнать больше
-        </button>
       </Row>
     </div>
   );

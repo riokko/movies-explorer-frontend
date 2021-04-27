@@ -8,7 +8,11 @@
 
 @media screen and (max-width: 1120px) {
     .promo__title {
-        margin: 0 auto 36px;
+        font-size: 40px;
+        line-height: 1.25;
+        width: 680px;
+        text-align: center;
+        margin: 0 auto 22px;
     }
 }
 

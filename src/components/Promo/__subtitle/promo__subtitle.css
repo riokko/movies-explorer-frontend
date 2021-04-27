@@ -6,3 +6,11 @@
   width: 310px;
   margin: 0 0 146px 0;
 }
+
+@media screen and (max-width: 1120px) {
+    .promo__subtitle {
+        width: 260px;
+        text-align: center;
+        margin: 0 auto 92px;
+    }
+}
