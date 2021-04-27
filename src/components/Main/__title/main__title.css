@@ -4,6 +4,14 @@
     line-height: 1.23;
     letter-spacing: -0.04em;
     margin: 0 0 90px;
+    padding-top: 110px;
     padding-bottom: 23px;
     border-bottom: 1px solid white;
+}
+
+@media screen and (max-width: 1120px) {
+    .main__title {
+        margin: 0 auto 94px;
+        padding-top: 90px;
+    }
 }

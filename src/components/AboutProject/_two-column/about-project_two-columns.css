@@ -8,3 +8,27 @@
     grid-gap: 26px 40px;
     margin-bottom: 100px;
 }
+
+@media screen and (max-width: 1280px) {
+    .about-project_two-columns {
+        grid-template-columns: 550px 550px;
+        grid-gap: 26px 40px;
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .about-project_two-columns {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 22px 30px;
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-project_two-columns {
+        grid-template-columns: 319px 319px;
+        grid-gap: 22px 30px;
+        margin-bottom: 93px;
+    }
+}

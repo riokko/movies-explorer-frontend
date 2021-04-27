@@ -9,3 +9,9 @@
 .about-project_timeline:last-child {
     padding-bottom: 110px;
 }
+
+@media screen and (max-width: 1120px) {
+    .about-project_timeline:last-child {
+        padding-bottom: 90px;
+    }
+}

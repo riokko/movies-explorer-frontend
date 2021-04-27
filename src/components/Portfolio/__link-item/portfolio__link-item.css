@@ -7,3 +7,9 @@
     border-bottom: none;
     padding-bottom: 105px;
 }
+
+@media screen and (max-width: 1120px) {
+    .portfolio__link-item:last-child {
+        padding-bottom: 90px;
+    }
+}

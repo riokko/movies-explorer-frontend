@@ -5,3 +5,11 @@
     letter-spacing: -0.04em;
     margin: 0 0 18px;
 }
+
+@media screen and (max-width: 1120px) {
+    .about-me__name {
+        font-size: 40px;
+        line-height: 1;
+        margin: 0 0 16px;
+    }
+}

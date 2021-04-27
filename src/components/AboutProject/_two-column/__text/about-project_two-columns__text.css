@@ -4,3 +4,10 @@
     line-height: 1.43;
     margin: 0;
 }
+
+@media screen and (max-width: 1120px) {
+    .about-project_two-columns__text {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}

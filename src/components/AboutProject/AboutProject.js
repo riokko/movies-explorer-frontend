@@ -9,11 +9,11 @@ function AboutProject() {
         <div className="about-project__content">
           <div className="about-project_two-columns">
             <h3 className="about-project_two-columns__title">
-              Дипломный проект включал 5 этапов
+                {`Дипломный проект включал 5\u00A0этапов`}
             </h3>
 
             <h3 className="about-project_two-columns__title">
-              На выполнение диплома ушло 5 недель
+                {`На выполнение диплома ушло 5\u00A0недель`}
             </h3>
             <p className="about-project_two-columns__text">
               Составление плана, работу над бэкендом, вёрстку, добавление

@@ -1,5 +1,12 @@
 .techs__subtitle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
 }
+
+@media screen and (max-width: 1120px) {
+  .techs__subtitle {
+    margin-bottom: 83px;
+  }
+}
+
