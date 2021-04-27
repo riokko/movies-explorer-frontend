@@ -1,0 +1,10 @@
+@import url(./__basement/footer__basement.css);
+@import url(./__copy/footer__copy.css);
+@import url(./__list/footer__list.css);
+@import url(./__list-item/footer__list-item.css);
+@import url(./__list-link/footer__list-link.css);
+@import url(./__title/footer__title.css);
+
+.footer {
+    background-color: #202020;
+}

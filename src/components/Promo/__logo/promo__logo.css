@@ -2,9 +2,18 @@
     background-image: url(../../../images/promo__logo.svg);
     width: 310px;
     height: 304px;
-    margin-right: 70px;
     background-repeat: no-repeat;
-    position: absolute;
-    top: 75px;
-    right: 0;
 }
+
+@media screen and (max-width: 1120px) {
+    .promo__logo {
+        position: relative;
+        margin: 0 auto;
+    }
+}
+
+/*@media screen and (max-width: 1120px) {*/
+/*    .promo {*/
+
+/*    }*/
+/*}*/

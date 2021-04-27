@@ -6,6 +6,6 @@
 .about-project_timeline {
   display: flex;
 }
-.about-project_timeline:last-of-type {
+.about-project_timeline:last-child {
     padding-bottom: 110px;
 }

@@ -1,12 +1,9 @@
 .portfolio__link-item {
     height: 90px;
     border-bottom: 1px solid #424242;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-.portfolio__link-item:last-of-type {
+.portfolio__link-item:last-child {
     border-bottom: none;
     padding-bottom: 105px;
 }

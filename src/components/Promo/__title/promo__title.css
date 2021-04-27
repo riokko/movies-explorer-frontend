@@ -5,3 +5,11 @@
     width: 640px;
     margin: 0 0 36px;
 }
+
+@media screen and (max-width: 1120px) {
+    .promo__title {
+        margin: 0 auto 36px;
+    }
+}
+
+

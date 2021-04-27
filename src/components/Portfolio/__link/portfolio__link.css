@@ -1,5 +1,4 @@
 .portfolio__link {
-    display: block;
     font-weight: normal;
     font-size: 30px;
     line-height: 1.67;
@@ -7,4 +6,7 @@
     color: white;
     text-decoration: none;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

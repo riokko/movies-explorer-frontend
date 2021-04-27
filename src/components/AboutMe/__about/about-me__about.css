@@ -5,6 +5,6 @@
     margin: 0 0 10px;
 }
 
-.about-me__about:last-of-type {
+.about-me__about:last-child {
     margin: 0;
 }

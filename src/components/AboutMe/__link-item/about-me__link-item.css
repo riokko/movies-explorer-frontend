@@ -5,6 +5,6 @@
     line-height: 1.21;
 }
 
-.about-me__link-item:last-of-type {
+.about-me__link-item:last-child {
     margin-right: 0;
 }

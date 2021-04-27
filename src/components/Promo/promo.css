@@ -1,4 +1,5 @@
 @import url(./__button/promo__button.css);
+@import url(./__content/promo__content.css);
 @import url(./__logo/promo__logo.css);
 @import url(./__subtitle/promo__subtitle.css);
 @import url(./__title/promo__title.css);
@@ -7,4 +8,10 @@
     background-color: #073042;
     padding-top: 75px;
     position: relative;
+}
+
+@media screen and (max-width: 1120px) {
+    .promo {
+        padding-top: 140px;
+    }
 }
