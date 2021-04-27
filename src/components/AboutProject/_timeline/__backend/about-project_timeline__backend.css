@@ -1,12 +1,21 @@
 .about-project_timeline__backend {
-    width: 20vw;
-    height: 40px;
-    background: transparent;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 1.21;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #8B8B8B;
+  width: 20vw;
+  height: 40px;
+  background: transparent;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8b8b8b;
+}
+
+@media screen and (max-width: 550px) {
+  .about-project_timeline__backend {
+    font-size: 11px;
+    line-height: 1.18;
+    height: 35px;
+    width: 36vw;
+  }
 }

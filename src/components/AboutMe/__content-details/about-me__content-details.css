@@ -1,7 +1,18 @@
 .about-me__content-details {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+@media screen and (max-width: 1120px) {
+  .about-me__content-details {
+    width: 348px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .about-me__content-details {
+    width: 284px;
+  }
+}

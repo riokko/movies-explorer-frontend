@@ -13,3 +13,13 @@
         padding-bottom: 90px;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .portfolio__link-item{
+        height: 67px;
+    }
+
+    .portfolio__link-item:last-child {
+        padding-bottom: 50px;
+    }
+}

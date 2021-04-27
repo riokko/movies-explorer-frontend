@@ -1,4 +1,4 @@
-.about-project_two-columns__text {
+.about-project__column-text {
     font-weight: normal;
     font-size: 14px;
     line-height: 1.43;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 1120px) {
-    .about-project_two-columns__text {
+    .about-project__column-text {
         font-size: 12px;
         line-height: 1.5;
     }

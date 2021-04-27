@@ -1,11 +1,20 @@
 .about-project_timeline__4-weeks {
-    width: 80vw;
-    height: 36px;
-    background: #303030;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 1.21;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 80vw;
+  height: 36px;
+  background: #303030;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 550px) {
+  .about-project_timeline__4-weeks {
+    font-size: 11px;
+    line-height: 1.18;
+    height: 35px;
+    width: 64vw;
+  }
 }

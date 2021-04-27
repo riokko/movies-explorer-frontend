@@ -8,3 +8,12 @@
     margin-right: 0;
 }
 
+@media screen and (max-width: 550px){
+    .footer__list-item{
+        margin: 0 0 12px;
+    }
+
+    .footer__list-item:last-child {
+        margin: 0 0 30px;
+    }
+}

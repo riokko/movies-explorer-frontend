@@ -1,5 +1,13 @@
 .footer__copy {
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 1.23;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 1.23;
+}
+
+@media screen and (max-width: 550px) {
+  .footer__copy {
+    color: #8b8b8b;
+    font-size: 12px;
+    line-height: 1.25;
+  }
 }

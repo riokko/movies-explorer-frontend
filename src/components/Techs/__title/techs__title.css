@@ -12,3 +12,11 @@
     margin: 0 0 22px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .techs__title {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 0 0 22px;
+  }
+}

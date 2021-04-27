@@ -8,9 +8,16 @@
 }
 
 @media screen and (max-width: 1120px) {
-    .promo__subtitle {
-        width: 260px;
-        text-align: center;
-        margin: 0 auto 92px;
-    }
+  .promo__subtitle {
+    width: 260px;
+    text-align: center;
+    margin: 0 auto 92px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .promo__subtitle {
+    margin: 0 auto 80px;
+
+  }
 }
