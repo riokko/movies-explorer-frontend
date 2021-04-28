@@ -4,15 +4,24 @@ import AboutProject from "../AboutProject/AboutProject";
 import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Potfolio";
+import SearchForm from "../SearchForm/SearchForm";
 
-function Main() {
+function Main({ loggedIn }) {
   return (
     <div className="content">
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      {loggedIn ? (
+        <div>
+          <SearchForm />
+        </div>
+      ) : (
+        <div>
+          <Promo />
+          <AboutProject />
+          <Techs />
+          <AboutMe />
+          <Portfolio />
+        </div>
+      )}
     </div>
   );
 }

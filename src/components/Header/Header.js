@@ -12,12 +12,21 @@ function Header({ loggedIn }) {
             <div className="header__nav">
               <div className="header__link">Фильмы</div>
               <div className="header__link">Сохранённые фильмы</div>
-                <button className="header__button header__button_account">Аккаунт<div className="header__button-icon"/></button>
+              <button
+                className="header__button header__button_account"
+                type="button"
+              >
+                Аккаунт
+                <div className="header__button-icon" />
+              </button>
             </div>
           ) : (
             <div className="header__nav">
               <div className="header__link">Регистрация</div>
-              <button className="header__button header__button_login" type="button">
+              <button
+                className="header__button header__button_login"
+                type="button"
+              >
                 Войти
               </button>
             </div>

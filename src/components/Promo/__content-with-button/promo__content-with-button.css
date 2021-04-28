@@ -1,6 +1,6 @@
 @media screen and (max-width: 1120px) {
-    .promo__content-with-button {
-        display: flex;
-        flex-direction: column;
-    }
+  .promo__content-with-button {
+    display: flex;
+    flex-direction: column;
+  }
 }

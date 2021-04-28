@@ -1,17 +1,17 @@
 @import url(./_header/row_header.css);
 
 .row {
-    padding: 0 70px;
+  padding: 0 70px;
 }
 
 @media screen and (max-width: 1120px) {
-    .row {
-        padding: 0 50px;
-    }
+  .row {
+    padding: 0 50px;
+  }
 }
 
 @media screen and (max-width: 550px) {
-    .row {
-        padding: 0 18px;
-    }
+  .row {
+    padding: 0 18px;
+  }
 }

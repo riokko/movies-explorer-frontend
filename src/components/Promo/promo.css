@@ -6,13 +6,13 @@
 @import url(./__title/promo__title.css);
 
 .promo {
-    background-color: #073042;
-    padding-top: 75px;
-    position: relative;
+  background-color: #073042;
+  padding-top: 75px;
+  position: relative;
 }
 
 @media screen and (max-width: 1120px) {
-    .promo {
-        padding-top: 140px;
-    }
+  .promo {
+    padding-top: 140px;
+  }
 }

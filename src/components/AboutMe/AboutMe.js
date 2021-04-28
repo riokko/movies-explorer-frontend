@@ -26,16 +26,19 @@ function AboutMe() {
             </div>
             <ul className="about-me__links">
               <li className="about-me__link-item">
-                <a href="/" className="about-me__link">Facebook</a>
+                <a href="/" className="about-me__link">
+                  Facebook
+                </a>
               </li>
               <li className="about-me__link-item">
-                <a href="/" className="about-me__link">GitHub</a>
+                <a href="/" className="about-me__link">
+                  GitHub
+                </a>
               </li>
             </ul>
           </div>
           <div className="about-me__photo" />
         </div>
-
       </Row>
     </div>
   );

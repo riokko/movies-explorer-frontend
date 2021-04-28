@@ -1,26 +1,26 @@
 .portfolio__link {
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 1.67;
-    letter-spacing: -0.04em;
-    color: white;
-    text-decoration: none;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 1.67;
+  letter-spacing: -0.04em;
+  color: white;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media screen and (max-width: 1120px) {
-    .portfolio__link {
-        font-size: 28px;
-        line-height: 1.79;
-    }
+  .portfolio__link {
+    font-size: 28px;
+    line-height: 1.79;
+  }
 }
 
-@media screen and (max-width: 550px){
-    .portfolio__link{
-        font-size: 18px;
-        line-height: 1.56;
-    }
+@media screen and (max-width: 550px) {
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 1.56;
+  }
 }

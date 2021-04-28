@@ -1,10 +1,10 @@
 .about-me__link-item {
-    margin-right: 20px;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 1.21;
+  margin-right: 20px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.21;
 }
 
 .about-me__link-item:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Index({children}) {
+function Index({ children }) {
   return <div className="row">{children}</div>;
 }
 

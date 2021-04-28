@@ -1,0 +1,7 @@
+@import url(./__button/search-form__button.css);
+@import url(./__form/search-form__form.css);
+@import url(./__input/search-form__input.css);
+
+.search-form {
+  background-color: #202020;
+}

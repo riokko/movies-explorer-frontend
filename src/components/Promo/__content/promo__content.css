@@ -1,12 +1,11 @@
 .promo__content {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
-
 @media screen and (max-width: 1120px) {
-    .promo__content {
-        flex-direction: column;
-    }
+  .promo__content {
+    flex-direction: column;
+  }
 }

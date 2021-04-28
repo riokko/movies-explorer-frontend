@@ -1,32 +1,32 @@
 .promo__button {
-    border: 1px solid rgba(255, 255, 255, .6);
-    border-radius: 3px;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 1.33;
-    width: 129px;
-    height: 36px;
-    margin: 0 0 75px 0;
-    color: white;
-    background-color: transparent;
-    transition: background-color 100ms ease-in-out;
-    outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 1.33;
+  width: 129px;
+  height: 36px;
+  margin: 0 0 75px 0;
+  color: white;
+  background-color: transparent;
+  transition: background-color 100ms ease-in-out;
+  outline: 0;
 }
 
 .promo__button:hover {
-    background-color: rgba(256, 256, 256, 0.8);
-    color: black;
-    cursor: pointer;
+  background-color: rgba(256, 256, 256, 0.8);
+  color: black;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1120px) {
-    .promo__button {
-        margin: 0 auto 76px;
-    }
+  .promo__button {
+    margin: 0 auto 76px;
+  }
 }
 
 @media screen and (max-width: 550px) {
-    .promo__button {
-        margin: 0 auto 30px;
-    }
+  .promo__button {
+    margin: 0 auto 30px;
+  }
 }
