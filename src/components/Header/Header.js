@@ -1,16 +1,27 @@
 import React from "react";
 import Row from "../Row";
 
-function Header() {
+function Header({ loggedIn }) {
   return (
-    <header className="header">
+    <header className={loggedIn ? "header_loggedIn" : "header"}>
       <Row>
         <div className="row_header">
-          <div className="logo header__logo"/>
-          <div className="header__nav">
-            <div>Регистрация</div>
-            <button className="header__button" type="button">Войти</button>
-          </div>
+          <div className="logo header__logo" />
+
+          {loggedIn ? (
+            <div className="header__nav">
+              <div className="header__link">Фильмы</div>
+              <div className="header__link">Сохранённые фильмы</div>
+                <button className="header__button header__button_account">Аккаунт<div className="header__button-icon"/></button>
+            </div>
+          ) : (
+            <div className="header__nav">
+              <div className="header__link">Регистрация</div>
+              <button className="header__button header__button_login" type="button">
+                Войти
+              </button>
+            </div>
+          )}
         </div>
       </Row>
     </header>

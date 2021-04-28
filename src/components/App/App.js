@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 function App() {
   return (
     <div className="page__content">
-      <Header />
+      <Header loggedIn={true}/>
       <Main />
       <Footer />
     </div>
