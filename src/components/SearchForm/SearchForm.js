@@ -6,18 +6,25 @@ function SearchForm() {
     <div className="search-form">
       <Row>
         <form className="search-form__form">
-          <input
-            type="text"
-            className="search-form__input"
-            placeholder="Фильм"
-            id="movie"
-          />
-          <button type="button" className="search-form__button" />
+          <div className="search-form__search-content">
+            <input
+              type="text"
+              className="search-form__input"
+              placeholder="Фильм"
+              id="movie"
+            />
+            <button type="submit" className="search-form__button" />
+          </div>
+          <label className="search-form__filter" htmlFor="filter">
+            <input
+              id="filter"
+              className="search-form__checkbox"
+              type="checkbox"
+            />
+            Короткометражки
+          </label>
         </form>
-        {/*<label className="search-form__filter" htmlFor="filter">*/}
-        {/*  <input id="filter" className="checkbox" type="checkbox" />*/}
-        {/*  Короткометражки*/}
-        {/*</label>*/}
+        <hr className="search-form__divider" />
       </Row>
     </div>
   );

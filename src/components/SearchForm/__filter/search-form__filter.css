@@ -1,0 +1,11 @@
+.search-form__filter {
+  display: flex;
+    flex-direction: row-reverse;
+  align-items: center;
+  margin-left: 41px;
+  cursor: pointer;
+
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 1.38;
+}
