@@ -7,7 +7,7 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 730px) {
   .about-me__photo {
     width: 284px;
     height: 344px;

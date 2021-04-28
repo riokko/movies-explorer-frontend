@@ -11,6 +11,12 @@
   }
 }
 
+@media screen and (max-width: 730px) {
+    .about-me__content-details {
+        width: 290px;
+    }
+}
+
 @media screen and (max-width: 550px) {
   .about-me__content-details {
     width: 284px;

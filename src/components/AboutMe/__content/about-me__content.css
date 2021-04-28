@@ -5,9 +5,10 @@
   padding-bottom: 100px;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
   .about-me__content {
     flex-direction: column-reverse;
     padding-bottom: 70px;
+      align-items: center;
   }
 }

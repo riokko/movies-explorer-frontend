@@ -16,11 +16,20 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 777px) {
   .promo__title {
     width: 310px;
     font-size: 30px;
     line-height: 1.27;
-    margin: 0 -10px 24px -10px;
+    margin: 0 auto 24px;
   }
+}
+
+@media screen and (max-width: 340px) {
+    .promo__title {
+        width: 310px;
+        font-size: 30px;
+        line-height: 1.27;
+        margin: 0 -10px 24px;
+    }
 }
