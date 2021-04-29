@@ -1,0 +1,26 @@
+.movies-cardlist__more-button {
+    display: flex;
+    justify-content: center;
+    width: 320px;
+    height: 36px;
+    margin: 0 auto;
+    padding: 11px 0 9px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity .2s;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    background-color: #2F2F2F;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.25;
+}
+
+.movies-cardlist__more-button:focus {
+    outline: none;
+}
+
+.movies-cardlist__more-button:hover {
+    opacity: .8;
+}

@@ -45,6 +45,12 @@ function MoviesCardList() {
             />
           ))}
         </ul>
+        <button
+          className="movies-cardlist__more-button"
+          type="button"
+        >
+          Ещё
+        </button>
       </Row>
     </div>
   );
