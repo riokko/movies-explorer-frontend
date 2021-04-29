@@ -23,7 +23,7 @@ function MoviesCard(movies) {
           aria-label="Нраица"
         />
       </div>
-        <p className="movies-card__duration">{time_convert(duration)}</p>
+      <p className="movies-card__duration">{time_convert(duration)}</p>
     </li>
   );
 }
