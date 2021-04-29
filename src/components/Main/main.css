@@ -1,6 +1,10 @@
 @import url(../../components/AboutMe/about-me.css);
 @import url(../../components/AboutProject/about-project.css);
+@import url(../../components/MoviesCard/movies-card.css);
+@import url(../../components/MoviesCard/__like/_is_liked/movies-card__like_is_liked.css);
+@import url(../../components/MoviesCardList/movies-cardlist.css);
 @import url(../../components/Portfolio/portfolio.css);
 @import url(../../components/Promo/promo.css);
 @import url(../../components/Techs/techs.css);
 @import url(../../components/SearchForm/search-form.css);
+

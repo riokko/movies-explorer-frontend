@@ -1,0 +1,16 @@
+@import url(./__duration/movies-card__duration.css);
+/*@import url(./__like/_is_liked/movies-card__like_is_liked.css);*/
+@import url(./__like/movies-card__like.css);
+@import url(./__name/movies-card__name.css);
+@import url(./__thumbnail/movies-card__thumbnail.css);
+@import url(./__title/movies-card__title.css);
+
+.movies-card{
+    width: 364px;
+    background: #222222;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}

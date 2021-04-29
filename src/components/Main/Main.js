@@ -5,6 +5,7 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Potfolio";
 import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 function Main({ loggedIn }) {
   return (
@@ -12,6 +13,7 @@ function Main({ loggedIn }) {
       {loggedIn ? (
         <div>
           <SearchForm />
+          <MoviesCardList />
         </div>
       ) : (
         <div>

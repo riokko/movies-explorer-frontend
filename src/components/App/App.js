@@ -6,10 +6,12 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 
 function App() {
+    const loggedIn = true;
+    // const loggedIn = false;
   return (
     <div className="page__content">
-      <Header loggedIn={true} />
-      <Main loggedIn={true} />
+      <Header loggedIn={loggedIn} />
+      <Main loggedIn={loggedIn} />
       <Footer />
     </div>
   );
