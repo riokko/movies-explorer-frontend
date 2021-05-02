@@ -8,6 +8,7 @@
 @import url(./__link/_account/header__link_account.css);
 @import url(./__link/_hidden/header__link_hidden.css);
 @import url(./__logo/header__logo.css);
+@import url(./__nav-container/header__nav-container.css);
 @import url(./__nav/header__nav.css);
 
 .header {

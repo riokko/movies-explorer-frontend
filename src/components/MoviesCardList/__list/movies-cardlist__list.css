@@ -8,3 +8,12 @@
   grid-gap: 37px 24px;
   justify-items: center;
 }
+
+@media screen and (max-width: 900px) {
+  .movies-cardlist__list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 30px 30px;
+    margin: 0 0 80px;
+  }
+}

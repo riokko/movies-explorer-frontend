@@ -18,27 +18,36 @@ function Header({ loggedIn }) {
           {loggedIn ? (
             <>
               <div
-                className={classnames("header__nav", {
-                  header__nav_is_visible: menuIsVisible,
+                className={classnames( {
+                  header__nav_container: menuIsVisible,
                 })}
               >
-                <button
-                  className="header__close-button"
-                  onClick={handlerMenuVisibility}
-                />
-                <a href="/" className="header__link header__link_hidden">
-                  Главная
-                </a>
-                <Link to="/movies" className="header__link">
-                  Фильмы
-                </Link>
-                <a href="/saved-movies" className="header__link">
-                  Сохранённые фильмы
-                </a>
-                <a href="/profile" className="header__link header__link_account">
-                  Аккаунт
-                  <div className="header__button-icon" />
-                </a>
+                <div
+                  className={classnames("header__nav", {
+                    header__nav_is_visible: menuIsVisible,
+                  })}
+                >
+                  <button
+                    className="header__close-button"
+                    onClick={handlerMenuVisibility}
+                  />
+                  <a href="/" className="header__link header__link_hidden">
+                    Главная
+                  </a>
+                  <Link to="/movies" className="header__link">
+                    Фильмы
+                  </Link>
+                  <a href="/saved-movies" className="header__link">
+                    Сохранённые фильмы
+                  </a>
+                  <a
+                    href="/profile"
+                    className="header__link header__link_account"
+                  >
+                    Аккаунт
+                    <div className="header__button-icon" />
+                  </a>
+                </div>
               </div>
               <button
                 type="button"
@@ -48,7 +57,9 @@ function Header({ loggedIn }) {
             </>
           ) : (
             <div className="header__nav">
-              <a href="/signup" className="header__link">Регистрация</a>
+              <a href="/signup" className="header__link">
+                Регистрация
+              </a>
               <a href="/signin" className="header__link header__link_login">
                 Войти
               </a>
