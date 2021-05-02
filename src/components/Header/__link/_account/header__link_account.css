@@ -1,0 +1,18 @@
+.header__link_account {
+  background-color: transparent;
+  color: white;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 13px;
+}
+
+@media screen and (max-width: 1024px) {
+  .header__link_account {
+    font-size: 14px;
+    line-height: 1.14;
+    padding-left: 0;
+    margin-top: auto;
+  }
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -7,8 +7,10 @@ import Footer from "../Footer/Footer";
 
 function App() {
     // переключение состояния залогина
-    const loggedIn = true;
-    // const loggedIn = false;
+    const [loggedIn, setLoggedIn] = useState(false);
+    // const [loggedIn, setLoggedIn] = useState(true);
+
+
   return (
     <div className="page__content">
       <Header loggedIn={loggedIn} />

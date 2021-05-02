@@ -11,18 +11,18 @@ function Main({ loggedIn }) {
   return (
     <div className="content">
       {loggedIn ? (
-        <div>
+        <>
           <SearchForm />
           <MoviesCardList />
-        </div>
+        </>
       ) : (
-        <div>
+        <>
           <Promo />
           <AboutProject />
           <Techs />
           <AboutMe />
           <Portfolio />
-        </div>
+        </>
       )}
     </div>
   );

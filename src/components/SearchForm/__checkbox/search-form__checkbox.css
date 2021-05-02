@@ -12,7 +12,7 @@
     transition-duration: .2s;
     border-radius: 20px;
     outline: none;
-    background-color: #202020;
+    background-color: #343434;
     appearance: none;
 }
 
@@ -25,11 +25,11 @@
     content: '';
     transition: left .2s;
     border-radius: 50%;
-    background-color: white;
+    background-color: #A0A0A0;
 }
 
 .search-form__checkbox:checked {
-    background-color: #202020;
+    background-color: #343434;
 }
 
 .search-form__checkbox:checked::after {

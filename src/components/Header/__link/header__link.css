@@ -1,7 +1,36 @@
 .header__link {
   margin-right: 30px;
+  text-decoration: none;
+  color: white;
 }
 
-.header__link:last-of-type {
-    margin-right: 50px;
+.header__link:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 1024px) {
+    .header__link {
+        display: inline-block;
+        padding-bottom: 6px;
+        font-size: 18px;
+        line-height: 1.22;
+        text-align: center;
+        margin-bottom: 24px;
+
+        box-sizing: border-box;
+    }
+
+    .header__link:first-of-type {
+        margin-top: 109px;
+    }
+
+    .header__link:last-of-type {
+        margin-bottom: 92px;
+    }
+
+    .header__link:hover {
+
+        padding-bottom: 4px;
+        border-bottom: 2px solid white;
+    }
 }

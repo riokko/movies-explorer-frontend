@@ -1,6 +1,6 @@
 .search-form__filter {
   display: flex;
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
   align-items: center;
   margin-left: 41px;
   cursor: pointer;

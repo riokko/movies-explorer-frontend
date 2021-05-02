@@ -1,0 +1,20 @@
+.header__burger {
+    background-image: url("../../../images/header__burger.svg");
+    height: 44px;
+    width: 44px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.header__burger:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 1024px){
+    .header__burger {
+        display: block;
+    }
+}
