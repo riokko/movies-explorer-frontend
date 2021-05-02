@@ -17,11 +17,7 @@ function MoviesCard(movies) {
       <img className="movies-card__thumbnail" alt={name} src={thumbnail} />
       <div className="movies-card__title">
         <h3 className="movies-card__name">{name}</h3>
-        <button
-          className={movieLikeButtonClassName}
-          type="button"
-          aria-label="Нраица"
-        />
+        <div className={movieLikeButtonClassName} />
       </div>
       <p className="movies-card__duration">{time_convert(duration)}</p>
     </li>

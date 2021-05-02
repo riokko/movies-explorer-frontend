@@ -3,6 +3,7 @@ import Row from "../Row";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList() {
+  // временная переменная пока нет подключения к БД
   const movies = [
     {
       name: "33 слова о дизайне",
@@ -21,7 +22,7 @@ function MoviesCardList() {
     {
       name: "В погоне за Бенкси",
       duration: 102,
-      like: false,
+      like: true,
       thumbnail:
         "https://downloader.disk.yandex.ru/preview/7bb5e3d4b7182376fdc7163ba0501ba78c618c6fe3436bf8e99533599d8d2ec4/608b4bbc/qdta7sji2l4sJ4QClyWbFzlguEwYNa97U0CnAVWjmu-9WwQI7A5L9pR6dSSqF6MBM1wVV9kMKr2_ToaxBzgg7A%3D%3D?uid=0&filename=third_movie.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
     },

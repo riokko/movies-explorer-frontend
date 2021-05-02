@@ -9,9 +9,4 @@
   transition: opacity 200ms ease-in-out;
   outline: 0;
   padding: 0;
-  cursor: pointer;
-}
-
-.element__like:hover {
-  opacity: 0.6;
 }

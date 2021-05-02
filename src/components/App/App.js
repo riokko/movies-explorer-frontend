@@ -6,6 +6,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 
 function App() {
+    // переключение состояния залогина
     const loggedIn = true;
     // const loggedIn = false;
   return (
