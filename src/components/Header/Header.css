@@ -1,0 +1,224 @@
+.header {
+    background-color: #073042;
+    padding: 18px 0;
+}
+
+.header__burger {
+    background-image: url(../../images/header__burger.svg);
+    height: 44px;
+    width: 44px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.header__burger:focus {
+    outline: none;
+}
+.header__button {
+    min-width: 76px;
+    min-height: 32px;
+    border: none;
+    border-radius: 3px;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1.33;
+    transition: background-color 200ms ease-in-out;
+    outline: 0;
+}
+
+.header__button:hover {
+    background-color: rgba(256, 256, 256, 0.1);
+    cursor: pointer;
+}
+.header__button-icon {
+    background-image: url(../../images/header__button_account.svg);
+    background-color: #313131;
+    border-radius: 6px;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header__close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin: 10px 25px;
+}
+
+.header__close-button:before,
+.header__close-button:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 22px;
+    background-color: white;
+    transform: rotate(45deg) translate(-50%, -50%);
+    transform-origin: top left;
+    transition: all 420ms;
+    content: "";
+}
+.header__close-button:after {
+    transform: rotate(-45deg) translate(-50%, -50%);
+}
+.header__close-button:hover:before,
+.header__close-button:hover:after {
+    background-color: grey;
+}
+.header__link {
+    margin-right: 30px;
+    text-decoration: none;
+    color: white;
+}
+
+.header__link:last-child {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+.header__link_account {
+    background-color: transparent;
+    color: white;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 13px;
+}
+.header__link_hidden {
+    display: none;
+}
+
+.header__nav_is_visible .header__link_hidden {
+    display: block;
+}
+.header__link_login {
+    background-color: #3ddc84;
+    padding: 8px 20px;
+    border-radius: 3px;
+    color: black;
+}
+.header__logo {
+    background-image: url(../../images/logo.png);
+    width: 38px;
+    height: 38px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+}
+
+.header__nav {
+    display: flex;
+    min-width: 200px;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 12px;
+    line-height: 1.33;
+}
+.header__nav_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /*transition: all 0.3s ease-in-out;*/
+    z-index: 1;
+}
+.header_loggedIn {
+    background-color: #202020;
+    padding: 18px 0;
+}
+
+@media screen and (max-width: 1024px) {
+    .header__burger {
+        display: block;
+    }
+
+    .header__close-button {
+        display: none;
+    }
+    .header__link {
+        display: inline-block;
+        padding-bottom: 6px;
+        font-size: 18px;
+        line-height: 1.22;
+        text-align: center;
+        margin-bottom: 24px;
+
+        box-sizing: border-box;
+    }
+
+    .header__link:first-of-type {
+        margin-top: 109px;
+    }
+
+    .header__link:last-of-type {
+        margin-bottom: 92px;
+    }
+
+    .header__link:hover {
+        padding-bottom: 4px;
+        border-bottom: 2px solid white;
+    }
+
+    .header__link:hover:last-of-type {
+        border-bottom: 2px solid transparent;
+    }
+
+    .header__link_account {
+        font-size: 14px;
+        line-height: 1.14;
+        padding-left: 0;
+        margin-top: auto;
+    }
+    .header__nav {
+        display: none;
+    }
+
+    .header__nav_is_visible {
+        display: flex;
+        background-color: #202020;
+        flex-direction: column;
+        width: 520px;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        justify-content: flex-start;
+    }
+
+    .header__nav_container {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .header__nav_is_visible {
+        width: 100%;
+    }
+}

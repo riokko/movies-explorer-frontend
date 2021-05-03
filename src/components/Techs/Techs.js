@@ -1,5 +1,6 @@
 import React from "react";
 import Row from "../Row";
+import "./Techs.css"
 
 function Techs() {
     return (

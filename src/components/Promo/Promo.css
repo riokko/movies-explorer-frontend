@@ -1,0 +1,121 @@
+.promo {
+    background-color: #073042;
+    padding-top: 75px;
+    position: relative;
+}
+.promo__button {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.33;
+    width: 129px;
+    height: 36px;
+    margin: 0 0 75px 0;
+    color: white;
+    background-color: transparent;
+    transition: background-color 100ms ease-in-out;
+    outline: 0;
+}
+
+.promo__button:hover {
+    background-color: rgba(256, 256, 256, 0.8);
+    color: black;
+    cursor: pointer;
+}
+.promo__content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.promo__content-details {
+    display: flex;
+    flex-direction: column;
+}
+.promo__logo {
+    background-image: url(../../images/promo__logo.svg);
+    width: 310px;
+    height: 304px;
+    background-repeat: no-repeat;
+}
+
+.promo__subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    opacity: 0.5;
+    width: 310px;
+    margin: 0 0 146px 0;
+}
+
+.promo__title {
+    font-size: 50px;
+    line-height: 1.16;
+    font-weight: normal;
+    width: 640px;
+    margin: 0 0 36px;
+}
+
+@media screen and (max-width: 1120px) {
+    .promo {
+        padding-top: 140px;
+    }
+    .promo__button {
+        margin: 0 auto 76px;
+    }
+    .promo__content {
+        flex-direction: column;
+    }
+    .promo__content-with-button {
+        display: flex;
+        flex-direction: column;
+    }
+    .promo__logo {
+        margin: 0 auto 48px;
+    }
+    .promo__subtitle {
+        width: 260px;
+        text-align: center;
+        margin: 0 auto 92px;
+    }
+    .promo__title {
+        font-size: 40px;
+        line-height: 1.25;
+        width: 680px;
+        text-align: center;
+        margin: 0 auto 22px;
+    }
+}
+
+@media screen and (max-width: 777px) {
+    .promo__title {
+        width: 310px;
+        font-size: 30px;
+        line-height: 1.27;
+        margin: 0 auto 24px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .promo__button {
+        margin: 0 auto 30px;
+    }
+    .promo__logo {
+        margin: 0 auto 44px;
+        width: 210px;
+        height: 206px;
+        background-size: contain;
+    }
+    .promo__subtitle {
+        margin: 0 auto 80px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .promo__title {
+        width: 310px;
+        font-size: 30px;
+        line-height: 1.27;
+        margin: 0 -10px 24px;
+    }
+}

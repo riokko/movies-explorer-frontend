@@ -1,7 +1,0 @@
-@import url(./__list/movies-cardlist__list.css);
-@import url(./__more-button/movies-cardlist__more-button.css);
-
-.movies-cardlist {
-    background-color: #202020;
-    padding-top: 70px;
-}

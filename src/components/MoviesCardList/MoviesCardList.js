@@ -1,6 +1,7 @@
 import React from "react";
 import Row from "../Row";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import "./MoviesCardList.css"
 
 function MoviesCardList() {
     // временная переменная пока нет подключения к БД

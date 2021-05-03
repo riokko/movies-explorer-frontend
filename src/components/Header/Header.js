@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import Row from "../Row";
 import { Link } from "react-router-dom";
+import "./Header.css"
 
 function Header({ loggedIn }) {
     const [menuIsVisible, setMenuIsVisible] = useState(false);

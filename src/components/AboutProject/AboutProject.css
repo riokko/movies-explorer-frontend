@@ -1,0 +1,132 @@
+.about-project {
+    background-color: #202020;
+}
+
+.about-project__column {
+    width: 550px;
+}
+.about-project__content {
+    padding: 0;
+}
+
+.about-project__column-text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.43;
+    margin: 0;
+}
+
+.about-project__column-title {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    margin: 0 0 26px;
+}
+
+.about-project__two-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.about-project__timeline {
+    display: flex;
+}
+.about-project__timeline:last-child {
+    padding-bottom: 110px;
+}
+
+.about-project__timeline-bar {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+}
+
+.about-project__timeline-bar_1-week {
+    width: 20vw;
+    background: #3ddc84;
+    color: black;
+}
+
+.about-project__timeline-bar_4-weeks {
+    width: 80vw;
+    background: #303030;
+}
+
+.about-project__timeline-bar_backend {
+    width: 20vw;
+    background: transparent;
+    color: #8b8b8b;
+}
+.about-project__timeline-bar_frontend {
+    width: 80vw;
+    background: transparent;
+    color: #8b8b8b;
+}
+
+@media screen and (min-width: 1380px) {
+    .about-project__content {
+        padding: 0 80px 0;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .about-project__column-text {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .about-project__column-title {
+        margin: 0 0 22px;
+    }
+
+    .about-project__two-columns {
+        margin-bottom: 93px;
+    }
+    .about-project_timeline:last-child {
+        padding-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .about-project__column {
+        width: 284px;
+        margin-bottom: 56px;
+    }
+
+    .about-project__column:last-child {
+        width: 284px;
+        margin-bottom: 0;
+    }
+    .about-project__column-title {
+        font-size: 18px;
+        line-height: 1.22;
+        margin: 0 0 16px;
+    }
+    .about-project__two-columns {
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+    .about-project__timeline-bar {
+        font-size: 11px;
+        line-height: 1.18;
+        height: 35px;
+    }
+    .about-project__timeline-bar_1-week {
+        width: 36vw;
+    }
+    .about-project__timeline-bar_4-weeks {
+        width: 64vw;
+    }
+
+    .about-project__timeline-bar_backend {
+        width: 36vw;
+    }
+    .about-project__timeline-bar_frontend {
+        width: 64vw;
+    }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./MoviesCard.css"
 
 function MoviesCard(movies) {
     const { name, duration, like, thumbnail } = movies.data;

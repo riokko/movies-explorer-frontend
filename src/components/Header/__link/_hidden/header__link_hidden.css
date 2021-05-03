@@ -1,7 +1,0 @@
-.header__link_hidden {
-    display: none;
-}
-
-.header__nav_is_visible .header__link_hidden {
-    display: block;
-}

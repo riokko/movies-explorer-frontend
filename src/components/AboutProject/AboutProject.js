@@ -1,5 +1,6 @@
 import React from "react";
 import Row from "../Row";
+import "./AboutProject.css"
 
 function AboutProject() {
     return (
@@ -30,19 +31,19 @@ function AboutProject() {
                             </p>
                         </div>
                     </div>
-                    <div className="about-project_timeline">
-                        <div className="about-project_timeline__1-week">
+                    <div className="about-project__timeline">
+                        <div className="about-project__timeline-bar about-project__timeline-bar_1-week">
                             1 неделя
                         </div>
-                        <div className="about-project_timeline__4-weeks">
+                        <div className="about-project__timeline-bar about-project__timeline-bar_4-weeks">
                             4 недели
                         </div>
                     </div>
-                    <div className="about-project_timeline">
-                        <div className="about-project_timeline__backend">
+                    <div className="about-project__timeline">
+                        <div className="about-project__timeline-bar about-project__timeline-bar_backend">
                             Back-end
                         </div>
-                        <div className="about-project_timeline__frontend">
+                        <div className="about-project__timeline-bar about-project__timeline-bar_frontend">
                             Front-end
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Row from "../Row";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import "./SearchForm.css"
 
 function SearchForm() {
     return (

@@ -14,7 +14,7 @@ function App() {
     return (
         <div className="page__content">
             <Header loggedIn={loggedIn} />
-            {loggedIn ? <Main /> : <Movies />}
+            {loggedIn ? <Movies /> : <Main />}
             <Footer />
         </div>
     );
