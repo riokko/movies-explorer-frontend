@@ -1,6 +1,6 @@
 .movies-card__thumbnail {
-  border-radius: 10px;
-  border-style: none;
-  max-width: 100%;
-  object-fit: cover;
+    border-radius: 10px;
+    border-style: none;
+    max-width: 100%;
+    object-fit: cover;
 }

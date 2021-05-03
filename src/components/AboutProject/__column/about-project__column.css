@@ -1,15 +1,15 @@
 .about-project__column {
-  width: 550px;
+    width: 550px;
 }
 
 @media screen and (max-width: 550px) {
-  .about-project__column {
-    width: 284px;
-    margin-bottom: 56px;
-  }
+    .about-project__column {
+        width: 284px;
+        margin-bottom: 56px;
+    }
 
-  .about-project__column:last-child {
-    width: 284px;
-    margin-bottom: 0;
-  }
+    .about-project__column:last-child {
+        width: 284px;
+        margin-bottom: 0;
+    }
 }

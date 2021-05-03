@@ -1,25 +1,25 @@
 .portfolio__link-item {
-  height: 90px;
-  border-bottom: 1px solid #424242;
+    height: 90px;
+    border-bottom: 1px solid #424242;
 }
 
 .portfolio__link-item:last-child {
-  border-bottom: none;
-  padding-bottom: 105px;
+    border-bottom: none;
+    padding-bottom: 105px;
 }
 
 @media screen and (max-width: 1120px) {
-  .portfolio__link-item:last-child {
-    padding-bottom: 90px;
-  }
+    .portfolio__link-item:last-child {
+        padding-bottom: 90px;
+    }
 }
 
 @media screen and (max-width: 550px) {
-  .portfolio__link-item {
-    height: 67px;
-  }
+    .portfolio__link-item {
+        height: 67px;
+    }
 
-  .portfolio__link-item:last-child {
-    padding-bottom: 50px;
-  }
+    .portfolio__link-item:last-child {
+        padding-bottom: 50px;
+    }
 }

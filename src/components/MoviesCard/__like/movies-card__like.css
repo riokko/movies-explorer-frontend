@@ -1,12 +1,12 @@
 .movies-card__like {
-  background-image: url("../../../images/movies-card__like.svg");
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-position: center;
-  border: none;
-  height: 12px;
-  width: 18px;
-  transition: opacity 200ms ease-in-out;
-  outline: 0;
-  padding: 0;
+    background-image: url("../../../images/movies-card__like.svg");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+    border: none;
+    height: 12px;
+    width: 18px;
+    transition: opacity 200ms ease-in-out;
+    outline: 0;
+    padding: 0;
 }

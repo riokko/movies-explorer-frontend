@@ -1,16 +1,16 @@
 .header__button {
-  min-width: 76px;
-  min-height: 32px;
-  border: none;
-  border-radius: 3px;
-  padding: 0;
-  font-size: 12px;
-  line-height: 1.33;
-  transition: background-color 200ms ease-in-out;
-  outline: 0;
+    min-width: 76px;
+    min-height: 32px;
+    border: none;
+    border-radius: 3px;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1.33;
+    transition: background-color 200ms ease-in-out;
+    outline: 0;
 }
 
 .header__button:hover {
-  background-color: rgba(256, 256, 256, 0.1);
-  cursor: pointer;
+    background-color: rgba(256, 256, 256, 0.1);
+    cursor: pointer;
 }

@@ -1,18 +1,18 @@
 .about-project__two-columns {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
 }
 
 @media screen and (max-width: 1120px) {
-  .about-project__two-columns {
-    margin-bottom: 93px;
-  }
+    .about-project__two-columns {
+        margin-bottom: 93px;
+    }
 }
 
 @media screen and (max-width: 550px) {
-  .about-project__two-columns {
-    flex-direction: column;
-    margin-bottom: 60px;
-  }
+    .about-project__two-columns {
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
 }

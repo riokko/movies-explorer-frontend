@@ -1,9 +1,9 @@
 .about-project__content {
-  padding: 0 80px 0;
+    padding: 0 80px 0;
 }
 
 @media screen and (max-width: 1380px) {
-  .about-project__content {
-    padding: 0;
-  }
+    .about-project__content {
+        padding: 0;
+    }
 }

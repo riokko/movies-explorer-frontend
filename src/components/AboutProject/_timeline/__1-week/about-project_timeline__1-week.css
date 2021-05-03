@@ -1,21 +1,21 @@
 .about-project_timeline__1-week {
-  width: 20vw;
-  height: 36px;
-  background: #3ddc84;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 1.21;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
+    width: 20vw;
+    height: 36px;
+    background: #3ddc84;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
 }
 
 @media screen and (max-width: 550px) {
-  .about-project_timeline__1-week {
-    font-size: 11px;
-    line-height: 1.18;
-    height: 35px;
-    width: 36vw;
-  }
+    .about-project_timeline__1-week {
+        font-size: 11px;
+        line-height: 1.18;
+        height: 35px;
+        width: 36vw;
+    }
 }

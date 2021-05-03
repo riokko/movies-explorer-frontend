@@ -1,18 +1,18 @@
 .footer__list-link {
-  text-decoration: none;
-  color: white;
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 1.23;
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.23;
 }
 
 .footer__list-link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 550px) {
-  .footer__list-link {
-    font-size: 12px;
-    line-height: 1.25;
-  }
+    .footer__list-link {
+        font-size: 12px;
+        line-height: 1.25;
+    }
 }

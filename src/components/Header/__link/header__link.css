@@ -1,11 +1,11 @@
 .header__link {
-  margin-right: 30px;
-  text-decoration: none;
-  color: white;
+    margin-right: 30px;
+    text-decoration: none;
+    color: white;
 }
 
 .header__link:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -29,8 +29,11 @@
     }
 
     .header__link:hover {
-
         padding-bottom: 4px;
         border-bottom: 2px solid white;
+    }
+
+    .header__link:hover:last-of-type {
+        border-bottom: 2px solid transparent;
     }
 }

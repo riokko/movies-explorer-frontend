@@ -8,24 +8,24 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 function Main({ loggedIn }) {
-  return (
-    <div className="content">
-      {loggedIn ? (
-        <>
-          <SearchForm />
-          <MoviesCardList />
-        </>
-      ) : (
-        <>
-          <Promo />
-          <AboutProject />
-          <Techs />
-          <AboutMe />
-          <Portfolio />
-        </>
-      )}
-    </div>
-  );
+    return (
+        <div className="content">
+            {loggedIn ? (
+                <>
+                    <SearchForm />
+                    <MoviesCardList />
+                </>
+            ) : (
+                <>
+                    <Promo />
+                    <AboutProject />
+                    <Techs />
+                    <AboutMe />
+                    <Portfolio />
+                </>
+            )}
+        </div>
+    );
 }
 
 export default Main;

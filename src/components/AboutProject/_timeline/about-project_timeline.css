@@ -4,14 +4,14 @@
 @import url(./__frontend/about-project_timeline__frontend.css);
 
 .about-project_timeline {
-  display: flex;
+    display: flex;
 }
 .about-project_timeline:last-child {
-  padding-bottom: 110px;
+    padding-bottom: 110px;
 }
 
 @media screen and (max-width: 1120px) {
-  .about-project_timeline:last-child {
-    padding-bottom: 90px;
-  }
+    .about-project_timeline:last-child {
+        padding-bottom: 90px;
+    }
 }

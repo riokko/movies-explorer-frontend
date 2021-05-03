@@ -1,19 +1,19 @@
 .search-form__button {
-  height: 34px;
-  width: 34px;
-  padding: 0;
-  border: none;
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background-color: #4285f4;
-  border-radius: 50%;
-  background-image: url("../../../images/search-form__button-icon.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
+    height: 34px;
+    width: 34px;
+    padding: 0;
+    border: none;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background-color: #4285f4;
+    border-radius: 50%;
+    background-image: url("../../../images/search-form__button-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
 }
 
 .search-form__button:focus {
-  outline: none;
+    outline: none;
 }
