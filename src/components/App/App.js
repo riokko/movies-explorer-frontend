@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -12,14 +13,21 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(true);
 
     return (
-        <div className="page__content">
-            <Header loggedIn={loggedIn} />
-            {loggedIn ? <Movies /> : <Main />}
-            <Footer />
-        </div>
+        <>
+            <div className="page__content">
+                <Header loggedIn={loggedIn} />
+                <Switch>
+                    <Route path="/movies">
+                        <Movies />
+                    </Route>
+                    <Route path="/">
+                        <Main />
+                    </Route>
+                </Switch>
+                <Footer />
+            </div>
+        </>
     );
 }
 
 export default App;
-
-// TODO Шапка на главной меняется в зависимости от состояния логина
