@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import Footer from "../Footer/Footer";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
     // переключение состояния залогина
@@ -18,7 +19,10 @@ function App() {
                 <Header loggedIn={loggedIn} />
                 <Switch>
                     <Route path="/movies">
-                        <Movies />
+                        <Movies/>
+                    </Route>
+                    <Route path="/saved-movies">
+                        <SavedMovies/>
                     </Route>
                     <Route path="/">
                         <Main />

@@ -6,7 +6,7 @@ import Navigation from "../Navigation/Navigation";
 
 function Header({ loggedIn }) {
     const {isExact: isMainPage} = useRouteMatch("/");
-    console.log(isMainPage)
+
     return (
         <header className={isMainPage ? "header" : "header_dark"}>
             <Row>
