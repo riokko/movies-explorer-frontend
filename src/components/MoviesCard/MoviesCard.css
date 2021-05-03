@@ -14,9 +14,6 @@
     color: #8b8b8b;
     margin: 0 16px 16px;
 }
-.movies-card__like_is_liked {
-    background-image: url(./../../images/movies-card__like_is-liked.svg);
-}
 
 .movies-card__like {
     background-image: url(../../images/movies-card__like.svg);
@@ -29,6 +26,9 @@
     transition: opacity 200ms ease-in-out;
     outline: 0;
     padding: 0;
+}
+.movies-card__like_is_liked {
+    background-image: url(./../../images/movies-card__like_is-liked.svg);
 }
 .movies-card__name {
     font-weight: normal;
