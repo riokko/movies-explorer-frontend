@@ -8,6 +8,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
     // переключение состояния залогина
@@ -18,23 +19,26 @@ function App() {
         <>
             <div className="page__content">
                 <Switch>
-                    <Route path="/signin">
+                    <Route exact path="/signin">
                         <Login />
                     </Route>
-                    <Route path="/signup">
-                        <Register/>
+                    <Route exact path="/signup">
+                        <Register />
                     </Route>
-                    <Route path="/profile">
+                    <Route exact path="/profile">
                         <Profile />
                     </Route>
-                    <Route path="/movies">
+                    <Route exact path="/movies">
                         <Movies loggedIn={loggedIn} />
                     </Route>
-                    <Route path="/saved-movies">
+                    <Route exact path="/saved-movies">
                         <SavedMovies loggedIn={loggedIn} />
                     </Route>
-                    <Route path="/">
+                    <Route exact path="/">
                         <Main loggedIn={loggedIn} />
+                    </Route>
+                    <Route path="*">
+                        <NotFound />
                     </Route>
                 </Switch>
             </div>
