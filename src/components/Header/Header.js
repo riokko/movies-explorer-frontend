@@ -10,8 +10,10 @@ function Header({ loggedIn }) {
     return (
         <header className={isMainPage ? "header" : "header_dark"}>
             <Row>
-                <div className="row_header">
-                    <Link to="/" className="logo header__logo" />
+                <div className="header__content">
+                    <Link to="/">
+                        <div className="header__logo" />
+                    </Link>
                     <Navigation loggedIn={loggedIn} />
                 </div>
             </Row>

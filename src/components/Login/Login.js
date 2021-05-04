@@ -14,8 +14,8 @@ function Login() {
                 E-mail
                 <input
                     type="email"
-                    className="form-page__label"
-                    placeholder="email@yandex.com"
+                    className="form-page__input"
+                    placeholder="pochta@yandex.ru"
                     id="email"
                     required
                 />
@@ -25,12 +25,11 @@ function Login() {
                 Пароль
                 <input
                     type="password"
-                    className="form-page__label"
+                    className="form-page__input"
                     id="password"
-                    autoComplete="on"
                     placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
                     required
-                    minLength="4"
+                    minLength="8"
                 />
             </label>
         </FormPage>

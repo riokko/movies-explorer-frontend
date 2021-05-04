@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./FormPage.css";
 
 import Row from "../Row";
-import Header from "../Header/Header";
 
 function FormPage({
     title,
@@ -14,30 +13,37 @@ function FormPage({
     children,
 }) {
     return (
-        <>
-            <div className="form-page">
-                <Row>
-                    <Link to="/" className="form-page__logo" />
+        <div className="form-page">
+            <Row>
+                <div className="form-page__content">
+                    <Link to="/">
+                        <div className="form-page__logo" />
+                    </Link>
                     <h1 className="form-page__title">{title}</h1>
-                    <form className="form-page__form" id="spf">
-                        {children}
-                    </form>
-                    <button
-                        form="form-page"
-                        className="form-page__button"
-                        type="submit"
-                    >
-                        {buttonText}
-                    </button>
-                    <p className="form-page__under-button-text">
-                        {underButtonText}{" "}
-                        <Link to={underButtonLink} className="spf__hint-link">
-                            {underButtonTextLink}
-                        </Link>
-                    </p>
-                </Row>
-            </div>
-        </>
+                    <div className="form-page__form-content">
+                        <form className="form-page__form" id="spf">
+                            {children}
+                        </form>
+                        <button
+                            form="form-page"
+                            className="form-page__button"
+                            type="submit"
+                        >
+                            {buttonText}
+                        </button>
+                        <p className="form-page__under-button-text">
+                            {underButtonText}{" "}
+                            <Link
+                                to={underButtonLink}
+                                className="form-page__under-button-link"
+                            >
+                                {underButtonTextLink}
+                            </Link>
+                        </p>
+                    </div>
+                </div>
+            </Row>
+        </div>
     );
 }
 
