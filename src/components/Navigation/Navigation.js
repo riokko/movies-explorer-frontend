@@ -28,9 +28,12 @@ function Navigation({ loggedIn }) {
                                 className="nav__close-button"
                                 onClick={handlerMenuVisibility}
                             />
-                            <a href="/" className="nav__link nav__link_hidden">
+                            <NavLink
+                                to="/"
+                                className="nav__link nav__link_hidden"
+                            >
                                 Главная
-                            </a>
+                            </NavLink>
                             <NavLink to="/movies" className="nav__link">
                                 Фильмы
                             </NavLink>

@@ -3,7 +3,7 @@ import Row from "../Row";
 import "./Profile.css";
 import Header from "../Header/Header";
 
-function Profile({loggedIn}) {
+function Profile({ loggedIn }) {
     const [name, setName] = React.useState("Виталий");
     const [email, setEmail] = React.useState("pochta@yandex.ru");
 

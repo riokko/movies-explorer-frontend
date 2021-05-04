@@ -2,11 +2,7 @@ import React from "react";
 import Row from "../Row";
 import "./Promo.css";
 
-function Promo() {
-    function knowMoreButtonHandler() {
-        
-    }
-
+function Promo({ handleClick }) {
     return (
         <div className="promo">
             <Row>
@@ -18,7 +14,11 @@ function Promo() {
                             Листайте ниже, чтобы узнать больше про этот проект и
                             его создателя.
                         </h3>
-                        <button className="promo__button" type="button" onClick={knowMoreButtonHandler}>
+                        <button
+                            onClick={handleClick}
+                            className="promo__button"
+                            type="button"
+                        >
                             Узнать больше
                         </button>
                     </div>

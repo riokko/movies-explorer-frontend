@@ -1,10 +1,12 @@
 import React from "react";
 import "./AboutProject.css";
 
-function AboutProject() {
+function AboutProject({ anchor }) {
     return (
         <div className="about-project">
-            <h2 className="main__title">О Проекте</h2>
+            <h2 className="main__title" ref={anchor}>
+                О Проекте
+            </h2>
             <div className="about-project__content">
                 <div className="about-project__two-columns">
                     <div className="about-project__column">

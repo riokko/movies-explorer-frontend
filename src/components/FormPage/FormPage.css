@@ -27,7 +27,7 @@
     line-height: 1.2;
 }
 
-.form-page__form-content{
+.form-page__form-content {
     display: flex;
     flex-direction: column;
     min-height: 560px;
@@ -90,14 +90,14 @@
     font-size: 14px;
     line-height: 1.21;
     text-align: center;
-    color: #8B8B8B;
+    color: #8b8b8b;
 }
 
 .form-page__under-button-link {
     transition: opacity 0.2s;
     text-align: center;
     text-decoration: none;
-    color: #4285F4;
+    color: #4285f4;
 }
 
 @media screen and (max-width: 440px) {
