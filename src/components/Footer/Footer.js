@@ -1,6 +1,6 @@
 import React from "react";
 import Row from "../Row";
-import "./Footer.css"
+import "./Footer.css";
 
 function Footer() {
     return (

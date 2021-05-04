@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "../Row";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import "./SearchForm.css"
+import "./SearchForm.css";
 
 function SearchForm() {
     return (
@@ -17,7 +17,7 @@ function SearchForm() {
                         />
                         <button type="submit" className="search-form__button" />
                     </div>
-                    <FilterCheckbox/>
+                    <FilterCheckbox />
                 </form>
                 <hr className="search-form__divider" />
             </Row>

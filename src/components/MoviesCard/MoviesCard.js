@@ -23,9 +23,9 @@ function MoviesCard({
                 <h3 className="movies-card__name">{name}</h3>
                 <div
                     className={classnames("movies-card__control", {
-                        'movies-card__control_delete': isSavedPage,
-                        'movies-card__control_liked': !isSavedPage && like,
-                        'movies-card__control_not-liked': !isSavedPage && !like,
+                        "movies-card__control_delete": isSavedPage,
+                        "movies-card__control_liked": !isSavedPage && like,
+                        "movies-card__control_not-liked": !isSavedPage && !like,
                     })}
                 />
             </div>

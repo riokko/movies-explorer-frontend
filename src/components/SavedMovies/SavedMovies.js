@@ -26,7 +26,7 @@ function SavedMovies() {
     return (
         <div className="movies">
             <SearchForm />
-            <MoviesCardList movies={movies} isSavedPage/>
+            <MoviesCardList movies={movies} isSavedPage />
             <Footer />
         </div>
     );

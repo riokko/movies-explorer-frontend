@@ -1,6 +1,6 @@
 import React from "react";
 import Row from "../Row";
-import "./Promo.css"
+import "./Promo.css";
 
 function Promo() {
     return (
