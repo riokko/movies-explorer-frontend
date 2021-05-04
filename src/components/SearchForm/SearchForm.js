@@ -1,12 +1,10 @@
 import React from "react";
-import Row from "../Row";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
 function SearchForm() {
     return (
         <div className="search-form">
-            <Row>
                 <form className="search-form__form">
                     <div className="search-form__search-content">
                         <input
@@ -20,7 +18,7 @@ function SearchForm() {
                     <FilterCheckbox />
                 </form>
                 <hr className="search-form__divider" />
-            </Row>
+
         </div>
     );
 }

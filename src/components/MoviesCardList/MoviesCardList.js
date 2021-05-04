@@ -1,12 +1,11 @@
 import React from "react";
-import Row from "../Row";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 
 function MoviesCardList({ movies, isSavedPage = false }) {
     return (
         <div className="movies-cardlist">
-            <Row>
+
                 <ul className="movies-cardlist__list">
                     {movies.map((movie, index) => (
                         <MoviesCard
@@ -16,7 +15,6 @@ function MoviesCardList({ movies, isSavedPage = false }) {
                         />
                     ))}
                 </ul>
-            </Row>
         </div>
     );
 }

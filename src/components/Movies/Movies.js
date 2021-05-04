@@ -1,9 +1,11 @@
 import React from "react";
 import "./Movies.css";
 
+import Row from "../Row";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 const movies = [
     {
@@ -36,15 +38,18 @@ const movies = [
     },
 ];
 
-function Movies() {
+function Movies({ loggedIn }) {
     return (
         <div className="movies">
-            <SearchForm />
-            <MoviesCardList movies={movies} />
-            <button className="movies__more-button" type="button">
-                Ещё
-            </button>
-            <Footer />
+            <Header loggedIn={loggedIn} />
+            <Row>
+                <SearchForm />
+                <MoviesCardList movies={movies} />
+                <button className="movies__more-button" type="button">
+                    Ещё
+                </button>
+                <Footer />
+            </Row>
         </div>
     );
 }

@@ -1,11 +1,10 @@
 import React from "react";
-import Row from "../Row";
 import "./Footer.css";
 
 function Footer() {
     return (
         <div className="footer">
-            <Row>
+
                 <p className="footer__title">
                     Учебный проект Яндекс.Практикум х BeatFilm.
                 </p>
@@ -29,7 +28,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-            </Row>
+
         </div>
     );
 }

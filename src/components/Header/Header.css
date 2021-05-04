@@ -3,6 +3,12 @@
     padding: 18px 0;
 }
 
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header__logo {
     background-image: url(../../images/logo.png);
     width: 38px;

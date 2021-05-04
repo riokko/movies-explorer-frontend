@@ -6,16 +6,23 @@ import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Potfolio";
 import "./Main.css";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import Row from "../Row";
 
-function Main() {
+function Main({ loggedIn }) {
     return (
         <>
+            <Header loggedIn={loggedIn} />
             <Promo />
-            <AboutProject />
+            <Row>
+                <AboutProject />
+            </Row>
             <Techs />
-            <AboutMe />
-            <Portfolio />
-            <Footer />
+            <Row>
+                <AboutMe />
+                <Portfolio />
+                <Footer />
+            </Row>
         </>
     );
 }
