@@ -5,6 +5,7 @@ import Techs from "../Techs/Techs";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Potfolio";
 import "./Main.css"
+import Footer from "../Footer/Footer";
 
 function Main() {
     return (
@@ -14,6 +15,7 @@ function Main() {
             <Techs />
             <AboutMe />
             <Portfolio />
+            <Footer/>
         </>
     );
 }

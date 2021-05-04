@@ -3,6 +3,7 @@ import "./SavedMovies.css";
 
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Footer from "../Footer/Footer";
 
 const movies = [
     {
@@ -26,6 +27,7 @@ function SavedMovies() {
         <div className="movies">
             <SearchForm />
             <MoviesCardList movies={movies} isSavedPage/>
+            <Footer />
         </div>
     );
 }

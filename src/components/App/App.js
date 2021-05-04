@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
-import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
 
 function App() {
     // переключение состояния залогина
@@ -18,17 +18,19 @@ function App() {
             <div className="page__content">
                 <Header loggedIn={loggedIn} />
                 <Switch>
+                    <Route path="/profile">
+                        <Profile />
+                    </Route>
                     <Route path="/movies">
-                        <Movies/>
+                        <Movies />
                     </Route>
                     <Route path="/saved-movies">
-                        <SavedMovies/>
+                        <SavedMovies />
                     </Route>
                     <Route path="/">
                         <Main />
                     </Route>
                 </Switch>
-                <Footer />
             </div>
         </>
     );

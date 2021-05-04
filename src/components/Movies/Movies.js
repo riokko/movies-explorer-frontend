@@ -3,6 +3,7 @@ import "./Movies.css";
 
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Footer from "../Footer/Footer";
 
 const movies = [
     {
@@ -43,6 +44,7 @@ function Movies() {
             <button className="movies__more-button" type="button">
                 Ещё
             </button>
+            <Footer />
         </div>
     );
 }

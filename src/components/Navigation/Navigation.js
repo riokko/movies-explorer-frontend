@@ -28,25 +28,22 @@ function Navigation({ loggedIn }) {
                                 className="nav__close-button"
                                 onClick={handlerMenuVisibility}
                             />
-                            <a
-                                href="/"
-                                className="nav__link nav__link_hidden"
-                            >
+                            <a href="/" className="nav__link nav__link_hidden">
                                 Главная
                             </a>
                             <Link to="/movies" className="nav__link">
                                 Фильмы
                             </Link>
-                            <a href="/saved-movies" className="nav__link">
+                            <Link to="/saved-movies" className="nav__link">
                                 Сохранённые фильмы
-                            </a>
-                            <a
-                                href="/profile"
+                            </Link>
+                            <Link
+                                to="/profile"
                                 className="nav__link nav__link_account"
                             >
                                 Аккаунт
                                 <div className="nav__button-icon" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <button
@@ -57,15 +54,12 @@ function Navigation({ loggedIn }) {
                 </>
             ) : (
                 <div className="nav">
-                    <a href="/signup" className="nav__link">
+                    <Link to="/signup" className="nav__link">
                         Регистрация
-                    </a>
-                    <a
-                        href="/signin"
-                        className="nav__link nav__link_login"
-                    >
+                    </Link>
+                    <Link to="/signin" className="nav__link nav__link_login">
                         Войти
-                    </a>
+                    </Link>
                 </div>
             )}
         </>
