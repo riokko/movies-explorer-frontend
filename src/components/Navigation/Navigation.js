@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navigation.css";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navigation({ loggedIn }) {
     const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -31,19 +31,19 @@ function Navigation({ loggedIn }) {
                             <a href="/" className="nav__link nav__link_hidden">
                                 Главная
                             </a>
-                            <Link to="/movies" className="nav__link">
+                            <NavLink to="/movies" className="nav__link">
                                 Фильмы
-                            </Link>
-                            <Link to="/saved-movies" className="nav__link">
+                            </NavLink>
+                            <NavLink to="/saved-movies" className="nav__link">
                                 Сохранённые фильмы
-                            </Link>
-                            <Link
+                            </NavLink>
+                            <NavLink
                                 to="/profile"
                                 className="nav__link nav__link_account"
                             >
                                 Аккаунт
                                 <div className="nav__button-icon" />
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
                     <button

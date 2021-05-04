@@ -3,6 +3,10 @@ import Row from "../Row";
 import "./Promo.css";
 
 function Promo() {
+    function knowMoreButtonHandler() {
+        
+    }
+
     return (
         <div className="promo">
             <Row>
@@ -14,7 +18,7 @@ function Promo() {
                             Листайте ниже, чтобы узнать больше про этот проект и
                             его создателя.
                         </h3>
-                        <button className="promo__button" type="button">
+                        <button className="promo__button" type="button" onClick={knowMoreButtonHandler}>
                             Узнать больше
                         </button>
                     </div>

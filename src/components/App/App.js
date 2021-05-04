@@ -12,8 +12,8 @@ import NotFound from "../NotFound/NotFound";
 
 function App() {
     // переключение состояния залогина
-    const [loggedIn, setLoggedIn] = useState(false);
-    // const [loggedIn, setLoggedIn] = useState(true);
+    // const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
 
     return (
         <>
@@ -26,7 +26,7 @@ function App() {
                         <Register />
                     </Route>
                     <Route exact path="/profile">
-                        <Profile />
+                        <Profile loggedIn={loggedIn} />
                     </Route>
                     <Route exact path="/movies">
                         <Movies loggedIn={loggedIn} />
