@@ -1,6 +1,12 @@
 .about-project__column {
     width: 550px;
+    margin-right: 10px;
 }
+
+.about-project__column:last-child {
+    margin-right: 0;
+}
+
 .about-project__content {
     padding: 0;
 }
@@ -17,7 +23,7 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: -0.04em;
-    margin: 0 0 26px;
+    margin: 0 10px 26px 0;
 }
 
 .about-project__two-columns {
@@ -90,14 +96,10 @@
 
 @media screen and (max-width: 550px) {
     .about-project__column {
-        width: 284px;
+        max-width: 400px;
         margin-bottom: 56px;
     }
 
-    .about-project__column:last-child {
-        width: 284px;
-        margin-bottom: 0;
-    }
     .about-project__column-title {
         font-size: 18px;
         line-height: 1.22;
@@ -124,5 +126,11 @@
     }
     .about-project__timeline-bar_frontend {
         width: 64vw;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .about-project__column {
+        max-width: 284px;
     }
 }
