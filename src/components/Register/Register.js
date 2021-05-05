@@ -19,7 +19,9 @@ function Register() {
                     id="reg-name"
                     required
                 />
-                <span className="form-page__error" id="reg-name-error"> </span>
+                <span className="form-page__error" id="reg-name-error">
+                    {" "}
+                </span>
             </label>
 
             <label htmlFor="email" className="form-page__label">
@@ -31,7 +33,9 @@ function Register() {
                     id="reg-email"
                     required
                 />
-                <span className="form-page__error" id="reg-email-error"> </span>
+                <span className="form-page__error" id="reg-email-error">
+                    {" "}
+                </span>
             </label>
 
             <label htmlFor="password" className="form-page__label">
@@ -45,7 +49,9 @@ function Register() {
                     required
                     minLength="8"
                 />
-                <span className="form-page__error" id="reg-password-error"> </span>
+                <span className="form-page__error" id="reg-password-error">
+                    {" "}
+                </span>
             </label>
         </FormPage>
     );

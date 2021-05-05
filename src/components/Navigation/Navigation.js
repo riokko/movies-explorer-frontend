@@ -25,7 +25,10 @@ function Navigation({ loggedIn }) {
                             })}
                         >
                             <button
-                                className={classnames("nav__close-button", "nav__close-button_is_visible")}
+                                className={classnames(
+                                    "nav__close-button",
+                                    "nav__close-button_is_visible"
+                                )}
                                 onClick={handlerMenuVisibility}
                             />
                             <NavLink

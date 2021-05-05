@@ -14,6 +14,9 @@ function SearchForm() {
                         id="movie"
                         required
                     />
+                    <span className="search-form__error" id="movie-error">
+                        {" "}
+                    </span>
                     <button type="submit" className="search-form__button" />
                 </div>
                 <FilterCheckbox />

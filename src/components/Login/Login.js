@@ -19,7 +19,9 @@ function Login() {
                     id="login-email"
                     required
                 />
-                <span className="form-page__error" id="login-email-error"> </span>
+                <span className="form-page__error" id="login-email-error">
+                    {" "}
+                </span>
             </label>
 
             <label htmlFor="password" className="form-page__label">
@@ -32,7 +34,9 @@ function Login() {
                     required
                     minLength="8"
                 />
-                <span className="form-page__error" id="login-password-error"> </span>
+                <span className="form-page__error" id="login-password-error">
+                    {" "}
+                </span>
             </label>
         </FormPage>
     );

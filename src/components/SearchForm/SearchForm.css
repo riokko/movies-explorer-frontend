@@ -62,6 +62,11 @@
     outline: none;
 }
 
+.search-form__error {
+    color: #ee3465;
+    margin-top: 10px;
+}
+
 .search-form__search-content {
     position: relative;
     width: 100%;

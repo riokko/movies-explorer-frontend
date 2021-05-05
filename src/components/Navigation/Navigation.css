@@ -162,9 +162,9 @@
         right: 0;
         justify-content: flex-start;
     }
-        .nav__close-button_is_visible {
-            display: block;
-        }
+    .nav__close-button_is_visible {
+        display: block;
+    }
 
     .nav_container {
         visibility: visible;
