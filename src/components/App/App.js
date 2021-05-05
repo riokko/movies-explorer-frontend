@@ -12,8 +12,8 @@ import NotFound from "../NotFound/NotFound";
 
 function App() {
     // переключение состояния залогина
-    // const [loggedIn, setLoggedIn] = useState(false);
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
+    // const [loggedIn, setLoggedIn] = useState(true);
 
     return (
         <>
