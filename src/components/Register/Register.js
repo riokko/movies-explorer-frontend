@@ -16,19 +16,22 @@ function Register() {
                     type="text"
                     className="form-page__input"
                     placeholder="Виталий"
-                    id="name"
+                    id="reg-name"
                     required
                 />
+                <span className="form-page__error" id="reg-name-error"> </span>
             </label>
+
             <label htmlFor="email" className="form-page__label">
                 E-mail
                 <input
                     type="email"
                     className="form-page__input"
                     placeholder="pochta@yandex.ru"
-                    id="email"
+                    id="reg-email"
                     required
                 />
+                <span className="form-page__error" id="reg-email-error"> </span>
             </label>
 
             <label htmlFor="password" className="form-page__label">
@@ -36,12 +39,13 @@ function Register() {
                 <input
                     type="password"
                     className="form-page__input"
-                    id="password"
+                    id="reg-password"
                     autoComplete="on"
                     placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
                     required
                     minLength="8"
                 />
+                <span className="form-page__error" id="reg-password-error"> </span>
             </label>
         </FormPage>
     );

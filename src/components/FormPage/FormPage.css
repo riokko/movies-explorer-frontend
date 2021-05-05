@@ -65,6 +65,11 @@
     outline: none;
 }
 
+.form-page__error {
+    color: #EE3465;
+    margin-top: 10px;
+}
+
 .form-page__button {
     height: 45px;
     width: 100%;
