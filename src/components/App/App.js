@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
+import moviesApi from "../../utils/MoviesApi";
+
 import "./App.css";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -12,8 +14,19 @@ import NotFound from "../NotFound/NotFound";
 
 function App() {
     // переключение состояния залогина
-    const [loggedIn, setLoggedIn] = useState(false);
-    // const [loggedIn, setLoggedIn] = useState(true);
+    // const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
+
+    const [movies, setMovies] = useState([]);
+
+    function fetchData() {
+        moviesApi
+            .getMoviesListFromApi()
+            .then((movies) => {
+                setMovies(movies);
+            })
+            .catch((e) => console.log(e));
+    }
 
     return (
         <>
@@ -29,7 +42,11 @@ function App() {
                         <Profile loggedIn={loggedIn} />
                     </Route>
                     <Route exact path="/movies">
-                        <Movies loggedIn={loggedIn} />
+                        <Movies
+                            loggedIn={loggedIn}
+                            movies={movies}
+                            fetchData={fetchData}
+                        />
                     </Route>
                     <Route exact path="/saved-movies">
                         <SavedMovies loggedIn={loggedIn} />
