@@ -30,7 +30,7 @@ const movies = [
         name: "Баския: Взрыв реальности",
         duration: 81,
         like: false,
-        thumbnail: '"https://ic.wampi.ru/2021/05/06/fourth_movie.png"',
+        thumbnail: "https://ic.wampi.ru/2021/05/06/fourth_movie.png",
     },
 ];
 
