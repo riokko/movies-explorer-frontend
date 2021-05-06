@@ -3,6 +3,9 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 
 function MoviesCardList({ movies, isSavedPage = false }) {
+
+
+
     return (
         <div className="movies-cardlist">
             <ul className="movies-cardlist__list">

@@ -24,6 +24,7 @@ function App() {
             .getMoviesListFromApi()
             .then((movies) => {
                 setMovies(movies);
+                console.log(movies)
             })
             .catch((e) => console.log(e));
     }
@@ -44,8 +45,8 @@ function App() {
                     <Route exact path="/movies">
                         <Movies
                             loggedIn={loggedIn}
-                            movies={movies}
                             fetchData={fetchData}
+                            movies={movies}
                         />
                     </Route>
                     <Route exact path="/saved-movies">

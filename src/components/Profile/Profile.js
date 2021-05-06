@@ -25,7 +25,9 @@ function Profile({ loggedIn }) {
                                 onChange={(e) => {
                                     setName(e.target.value);
                                 }}
-                            />
+                            /><span className="form-page__error" id="login-email-error">
+                    {" "}
+                </span>
                         </label>
                         <hr className="profile__divider" />
                         <label className="profile__label" htmlFor="email">
@@ -39,7 +41,9 @@ function Profile({ loggedIn }) {
                                 onChange={(e) => {
                                     setEmail(e.target.value);
                                 }}
-                            />
+                            /><span className="form-page__error" id="login-password-error">
+                    {" "}
+                </span>
                         </label>
                     </form>
                     <div className="profile__buttons">

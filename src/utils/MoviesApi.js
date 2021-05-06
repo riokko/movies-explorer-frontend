@@ -6,7 +6,7 @@ class MoviesApi {
         this._mimeType = "application/json";
     }
 
-    getMoviesListFromApi() {
+     getMoviesListFromApi() {
         return fetch(`${this._baseUrl}/beatfilm-movies`, {
             method: "GET",
             headers: {
