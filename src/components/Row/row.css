@@ -1,0 +1,15 @@
+.row {
+    padding: 0 70px;
+}
+
+@media screen and (max-width: 1120px) {
+    .row {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .row {
+        padding: 0 14px;
+    }
+}

@@ -1,0 +1,223 @@
+.nav {
+    display: flex;
+    min-width: 200px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.nav_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /*transition: all 0.3s ease-in-out;*/
+    z-index: 1;
+}
+.nav__burger {
+    background-image: url(../../images/nav__burger.svg);
+    height: 44px;
+    width: 44px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.nav__burger:focus {
+    outline: none;
+}
+
+.nav__button-icon {
+    background-image: url(../../images/nav__button_account.svg);
+    background-color: #313131;
+    border-radius: 6px;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav__close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin: 10px 25px;
+}
+
+.nav__close-button:before,
+.nav__close-button:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 22px;
+    background-color: white;
+    transform: rotate(45deg) translate(-50%, -50%);
+    transform-origin: top left;
+    transition: all 420ms;
+    content: "";
+}
+.nav__close-button:after {
+    transform: rotate(-45deg) translate(-50%, -50%);
+}
+.nav__close-button:hover:before,
+.nav__close-button:hover:after {
+    background-color: grey;
+}
+
+.nav__link {
+    margin-right: 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    line-height: 1.33;
+}
+.nav__link:last-child {
+    margin-right: 0;
+}
+
+.nav__burger-link {
+    margin-right: 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    line-height: 1.33;
+}
+
+.nav__burger-link:last-child {
+    margin-right: 0;
+}
+
+.nav__link_account {
+    background-color: transparent;
+    color: white;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 13px;
+}
+.nav__link_hidden {
+    display: none;
+}
+
+.nav_is_visible .nav__link_hidden {
+    display: block;
+}
+.nav__close-button_is_visible {
+    display: none;
+}
+
+.nav__link_login {
+    background-color: #3ddc84;
+    padding: 8px 20px;
+    border-radius: 3px;
+    color: black;
+}
+
+.nav_loggedIn {
+    display: flex;
+    min-width: 200px;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 12px;
+    line-height: 1.33;
+}
+
+@media screen and (max-width: 1024px) {
+    .nav_loggedIn {
+        display: none;
+    }
+
+    .nav {
+        font-size: 12px;
+        line-height: 1.33;
+    }
+
+    .nav_is_visible {
+        display: flex;
+        background-color: #202020;
+        flex-direction: column;
+        width: 520px;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        justify-content: flex-start;
+    }
+    .nav__close-button_is_visible {
+        display: block;
+    }
+
+    .nav_container {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .nav__burger {
+        display: block;
+    }
+
+    .nav__burger-link {
+        display: inline-block;
+        padding-bottom: 6px;
+        font-size: 18px;
+        line-height: 1.22;
+        text-align: center;
+        margin-bottom: 24px;
+        box-sizing: border-box;
+    }
+
+    .nav__burger-link:first-of-type {
+        margin-top: 109px;
+    }
+
+    .nav__burger-link:last-of-type {
+        margin-bottom: 92px;
+        display: flex;
+    }
+
+    .nav__burger-link:hover {
+        padding-bottom: 4px;
+        border-bottom: 2px solid white;
+    }
+
+    .nav__burger-link:hover:last-of-type {
+        border-bottom: 2px solid transparent;
+    }
+
+    .nav__link_account {
+        font-size: 14px;
+        line-height: 1.14;
+        padding-left: 0;
+        margin-top: auto;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .nav_is_visible {
+        width: 100%;
+    }
+
+    .nav__link {
+        font-size: 10px;
+        line-height: 1.6;
+    }
+}
