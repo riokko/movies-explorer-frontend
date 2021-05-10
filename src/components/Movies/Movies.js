@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Movies.css";
 
 import Row from "../Row";
@@ -7,21 +7,27 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
-function Movies({ loggedIn, movies, fetchData }) {
+function Movies({ loggedIn, movies, fetchData, numberOfDownloadedMovies }) {
+    const [searchInputValue, setSearchInputValue] = useState("");
     return (
         <div className="movies">
             <Header loggedIn={loggedIn} />
             <Row>
-                <SearchForm fetchData={fetchData} />
-                <MoviesCardList movies={movies} />
+                <SearchForm
+                    fetchData={fetchData}
+                    setSearchInputValue={setSearchInputValue}
+                />
+                <MoviesCardList
+                    movies={movies}
+                    numberOfDownloadedMovies={numberOfDownloadedMovies}
+                    searchInputValue={searchInputValue}
+                />
                 {movies.length > 0 ? (
                     <button className="movies__more-button" type="button">
                         Ещё
                     </button>
                 ) : (
-                    <p>
-                        Введите название или ключевые слова в строку поиска.
-                    </p>
+                    <p>Введите название или ключевые слова в строку поиска.</p>
                 )}
 
                 <Footer />

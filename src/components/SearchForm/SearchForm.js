@@ -1,25 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
-function SearchForm({ fetchData }) {
+function SearchForm({ fetchData, setSearchInputValue }) {
+    const searchInputSelector = document.querySelector(".search-form__input");
+    const searchErrorSelector = document.querySelector(".search-form__error");
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    function handleChange(e) {
+        searchInputSelector.addEventListener("input", () => {
+            searchErrorSelector.classList.remove("search-form__show-error");
+        });
+    }
 
     function handleSubmitSearchForm(e) {
         e.preventDefault();
-        if (!isValid(e.target)) {
-            e.target
-                .querySelector(".search-form__error")
-                .classList.add("search-form__show-error");
+        if (searchInputSelector.validity.valid === false) {
+            searchErrorSelector.classList.add("search-form__show-error");
         } else {
-            e.target
-                .querySelector(".search-form__error")
-                .classList.remove("search-form__show-error");
+            setIsLoading(true);
+            setSearchInputValue(searchInputSelector.value); // поисковый запрос передаётся в стейт-переменную
+            localStorage.setItem("searchInput", searchInputSelector.value); // поисковый запрос обновляется в локальном хранилище
             fetchData();
+            setIsLoading(false);
         }
-    }
-
-    function isValid(form) {
-        return form.querySelector(".search-form__input").validity.valid;
     }
 
     return (
@@ -36,6 +41,7 @@ function SearchForm({ fetchData }) {
                         placeholder="Фильм"
                         id="movie"
                         required
+                        onChange={handleChange}
                     />
 
                     <button type="submit" className="search-form__button" />
