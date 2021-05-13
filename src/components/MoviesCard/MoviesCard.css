@@ -6,7 +6,12 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+
+.movies-card__trailer-link {
     cursor: pointer;
+    text-decoration: none;
+    color: white;
 }
 
 .movies-card__duration {
@@ -14,6 +19,10 @@
     line-height: 1.18;
     color: #8b8b8b;
     margin: 0 16px 16px;
+}
+
+.movies-card__control {
+    cursor: pointer;
 }
 
 .movies-card__control_not-liked {

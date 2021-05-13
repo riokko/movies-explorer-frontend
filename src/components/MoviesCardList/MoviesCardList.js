@@ -2,7 +2,7 @@ import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 
-function MoviesCardList({ movies, isSavedPage = false }) {
+function MoviesCardList({ movies, isSavedPage = false, handleMovieLike }) {
     console.log(movies)
     if (!movies) {
         return null;
@@ -16,6 +16,7 @@ function MoviesCardList({ movies, isSavedPage = false }) {
                         key={movie.id}
                         data={movie}
                         isSavedPage={isSavedPage}
+                        handleMovieLike={handleMovieLike}
                     />
                 ))}
             </ul>

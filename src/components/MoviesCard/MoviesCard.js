@@ -5,7 +5,11 @@ import noCover from "../../images/no-thumb.png";
 
 import { BASE_URL } from "../../utils/MoviesApi";
 
-function MoviesCard({ data: { _id, nameRU, duration, like, image }, isSavedPage }) {
+function MoviesCard({
+    data: { _id, nameRU, duration, like, image, trailerLink },
+    isSavedPage,
+    handleMovieLike,
+}) {
     const imageUrl = image ? `${BASE_URL}${image.url}` : noCover;
 
     function time_convert(num) {
@@ -16,7 +20,17 @@ function MoviesCard({ data: { _id, nameRU, duration, like, image }, isSavedPage 
 
     return (
         <li className="movies-card">
-            <img className="movies-card__thumbnail" alt={nameRU} src={imageUrl} />
+            <a
+                href={trailerLink}
+                className="movies-card__trailer-link"
+                target="_blank"
+            >
+                <img
+                    className="movies-card__thumbnail"
+                    alt={nameRU}
+                    src={imageUrl}
+                />
+            </a>
             <div className="movies-card__title">
                 <h3 className="movies-card__name">{nameRU}</h3>
                 <div
@@ -25,6 +39,7 @@ function MoviesCard({ data: { _id, nameRU, duration, like, image }, isSavedPage 
                         "movies-card__control_liked": !isSavedPage && like,
                         "movies-card__control_not-liked": !isSavedPage && !like,
                     })}
+                    onClick={handleMovieLike}
                 />
             </div>
             <p className="movies-card__duration">{time_convert(duration)}</p>

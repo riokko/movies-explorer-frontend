@@ -18,7 +18,7 @@ function SearchForm({
 
     useEffect(() => {
         if (!isFirstRender.current) {
-            const savedInputValue = localStorage.getItem("searchInput");
+            const savedInputValue = localStorage.getItem("searchInput") || [];
 
             if (savedInputValue.length > 0) setInputValue(savedInputValue);
             isFirstRender.current = true;

@@ -23,7 +23,7 @@ const LOADING_MOVIES_CONFIG = {
     },
 };
 
-function Movies({ loggedIn }) {
+function Movies({ loggedIn, handleMovieLike }) {
     const [isLoading, setIsLoading] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
     const [numberOfDownloadedMovies, setNumberOfDownloadedMovies] = useState(
@@ -52,7 +52,7 @@ function Movies({ loggedIn }) {
 
     useEffect(() => {
         if (!isFirstRender.current) {
-            const savedMovies = JSON.parse(localStorage.getItem("filteredMovies"))
+            const savedMovies = JSON.parse(localStorage.getItem("filteredMovies") || "[]")
 
             if (savedMovies.length > 0)
             setMovies(savedMovies)
@@ -116,6 +116,7 @@ function Movies({ loggedIn }) {
                 />
                 <MoviesCardList
                     movies={shownMovies}
+                    handleMovieLike={handleMovieLike}
                 />
                 {isLoading && <Preloader />}
                 {movies.length > 0 && showMore && (
