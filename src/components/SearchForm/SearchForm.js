@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
@@ -8,7 +8,7 @@ function SearchForm({
     setMovies,
     handleIsLoading,
     setNothingFound,
-    setShowSearchError
+    setShowSearchError,
 }) {
     const [inputValue, setInputValue] = useState("");
     const [showError, setShowError] = useState(false);
@@ -18,14 +18,12 @@ function SearchForm({
 
     useEffect(() => {
         if (!isFirstRender.current) {
-            const savedInputValue = localStorage.getItem("searchInput")
+            const savedInputValue = localStorage.getItem("searchInput");
 
-            if (savedInputValue.length > 0)
-                setInputValue(savedInputValue)
+            if (savedInputValue.length > 0) setInputValue(savedInputValue);
             isFirstRender.current = true;
         }
-
-    })
+    }, [inputValue]);
 
     function fetchData(searchText, loadingSetter) {
         moviesApi

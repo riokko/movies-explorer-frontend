@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import FormPage from "../FormPage/FormPage";
 
-function Register() {
-
+function Register({ handleRegister }) {
     const [data, setData] = useState({
+        name: "",
         email: "",
         password: "",
     });
@@ -16,15 +16,10 @@ function Register() {
         });
     }
 
-    function handleRegister() {
-
-    }
-
-
     function handleSubmit(e) {
         e.preventDefault();
-        const { email, password } = data;
-        handleRegister(email, password);
+        const { name, email, password } = data;
+        handleRegister(name, email, password);
     }
 
     return (
@@ -45,6 +40,7 @@ function Register() {
                     id="reg-name"
                     required
                     onChange={handleChange}
+                    name="name"
                 />
                 <span className="form-page__error" id="reg-name-error">
                     {" "}
@@ -60,6 +56,7 @@ function Register() {
                     id="reg-email"
                     required
                     onChange={handleChange}
+                    name="email"
                 />
                 <span className="form-page__error" id="reg-email-error">
                     {" "}
@@ -75,8 +72,9 @@ function Register() {
                     autoComplete="on"
                     placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
                     required
-                    minLength="8"
+                    minLength="2"
                     onChange={handleChange}
+                    name="password"
                 />
                 <span className="form-page__error" id="reg-password-error">
                     {" "}

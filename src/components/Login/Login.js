@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import FormPage from "../FormPage/FormPage";
 
-function Login() {
+function Login({ handleLogin }) {
+    const [data, setData] = useState({
+        email: "",
+        password: "",
+    });
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setData({
+            ...data,
+            [name]: value,
+        });
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const { email, password } = data;
+
+        if (!email || !password) {
+            return;
+        }
+        handleLogin(email, password);
+    }
+
     return (
         <FormPage
             title={"Рады видеть!"}
@@ -9,6 +32,7 @@ function Login() {
             underButtonText={"Ещё не зарегистрированы?"}
             underButtonLink={"/signup"}
             underButtonTextLink={"Регистрация"}
+            handleSubmit={handleSubmit}
         >
             <label htmlFor="email" className="form-page__label">
                 E-mail
@@ -18,6 +42,8 @@ function Login() {
                     placeholder="pochta@yandex.ru"
                     id="login-email"
                     required
+                    name="email"
+                    onChange={handleChange}
                 />
                 <span className="form-page__error" id="login-email-error">
                     {" "}
@@ -32,7 +58,9 @@ function Login() {
                     id="login-password"
                     placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
                     required
-                    minLength="8"
+                    minLength="2"
+                    name="password"
+                    onChange={handleChange}
                 />
                 <span className="form-page__error" id="login-password-error">
                     {" "}

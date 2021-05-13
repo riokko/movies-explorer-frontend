@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Row from "../Row";
 import "./Profile.css";
 import Header from "../Header/Header";
+// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Profile({ loggedIn }) {
+    // const currentUser = useContext(CurrentUserContext);
     const [name, setName] = React.useState("Виталий");
     const [email, setEmail] = React.useState("pochta@yandex.ru");
 
@@ -25,9 +27,13 @@ function Profile({ loggedIn }) {
                                 onChange={(e) => {
                                     setName(e.target.value);
                                 }}
-                            /><span className="form-page__error" id="login-email-error">
-                    {" "}
-                </span>
+                            />
+                            <span
+                                className="form-page__error"
+                                id="login-email-error"
+                            >
+                                {" "}
+                            </span>
                         </label>
                         <hr className="profile__divider" />
                         <label className="profile__label" htmlFor="email">
@@ -41,9 +47,13 @@ function Profile({ loggedIn }) {
                                 onChange={(e) => {
                                     setEmail(e.target.value);
                                 }}
-                            /><span className="form-page__error" id="login-password-error">
-                    {" "}
-                </span>
+                            />
+                            <span
+                                className="form-page__error"
+                                id="login-password-error"
+                            >
+                                {" "}
+                            </span>
                         </label>
                     </form>
                     <div className="profile__buttons">

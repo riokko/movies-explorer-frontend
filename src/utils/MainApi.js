@@ -1,22 +1,71 @@
-export const BASE_URL = "https://api.movie.nomoredomains.icu";
+// const BASE_URL = "https://api.movie.nomoredomains.icu";
+const BASE_URL = "http://localhost:3001";
 
 class MainApi {
-    constructor({ baseUrl }) {
-        this._baseUrl = baseUrl;
+    constructor({ url }) {
+        this._baseUrl = url;
+        this._mimeType = "application/json";
+        this._token = `Bearer ${localStorage.getItem("token")}`;
+    }
+
+    setToken(token) {
+        this._token = `Bearer ${token}`;
     }
 
     register(name, email, password) {
-        fetch(`${BASE_URL}/signup`, {
+        return fetch(`${this._baseUrl}/signup`, {
             method: "POST",
             headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
+                "Content-Type": this._mimeType,
             },
             body: JSON.stringify({ name, email, password }),
-        }).then((res) => res);
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                return Promise.reject(new Error(`${response.status}`));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    login(email, password) {
+        return fetch(`${this._baseUrl}/signin`, {
+            method: "POST",
+            headers: {
+                "Content-Type": this._mimeType,
+            },
+            body: JSON.stringify({ email, password }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                return Promise.reject(new Error(`${response.status}`));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    getUserData(token) {
+        return fetch(`${this._baseUrl}/users/me`, {
+            method: "GET",
+            headers: {
+                "Content-Type": this._mimeType,
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((response) => response)
     }
 }
 
-const mainApi = new MainApi(BASE_URL);
+const apiConfig = {
+    url: BASE_URL,
+};
+
+const mainApi = new MainApi(apiConfig);
 
 export default mainApi;

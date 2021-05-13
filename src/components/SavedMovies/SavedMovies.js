@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext} from "react";
+// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import Row from "../Row";
 import SearchForm from "../SearchForm/SearchForm";
@@ -22,15 +23,17 @@ const movies = [
 ];
 
 function SavedMovies({ loggedIn }) {
+    // const currentUser = useContext(CurrentUserContext);
+
     return (
-        <div className="movies">
-            <Header loggedIn={loggedIn} />
-            <Row>
-                <SearchForm />
-                <MoviesCardList movies={movies} isSavedPage />
-                <Footer />
-            </Row>
-        </div>
+            <div className="movies">
+                <Header loggedIn={loggedIn} />
+                <Row>
+                    <SearchForm />
+                    <MoviesCardList movies={movies} isSavedPage />
+                    <Footer />
+                </Row>
+            </div>
     );
 }
 

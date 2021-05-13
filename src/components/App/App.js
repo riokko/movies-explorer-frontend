@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 
-// import MainApi from "../../utils/MainApi";
+import mainApi from "../../utils/MainApi";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import "./App.css";
 import Main from "../Main/Main";
@@ -13,27 +14,81 @@ import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
 
 const App = () => {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [currentUser, setCurrentUser] = useState({});
 
-    const [loggedIn, setLoggedIn] = useState(true);
+    function tokenCheck() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            return;
+        }
+        setLoggedIn(true);
+        mainApi
+            .getUserData(token)
+            .then((res) => {
+                console.log(res)
+                if (res.status === 401) {
+                    throw new Error(
+                        "Токен не передан или передан не в том формате"
+                    );
+                } else if (res.status === 400) {
+                    throw new Error("Переданный токен некорректен");
+                } else {
+                    return res.json();
+                }
+            })
+            .then((res) => {
+                const data = res.email ? res : {};
+                setCurrentUser(data);
+            })
+            // eslint-disable-next-line no-console
+            .catch((e) => console.log(e));
+    }
 
+    function handleRegister(name, email, password) {
+        mainApi
+            .register(name, email, password)
+            .then((data) => {
+                console.log("register data", data);
+            })
+            .catch((e) => console.log(e));
+    }
+
+    function handleLogin(email, password) {
+        mainApi
+            .login(email, password)
+            .then((data) => {
+                if (data.token) {
+                    mainApi.setToken(data.token);
+                    setLoggedIn(true);
+                    localStorage.setItem("token", data.token);
+                    tokenCheck();
+                } else if (data.status === 400) {
+                    throw new Error("не передано одно из полей");
+                } else if (data.status === 401) {
+                    throw new Error("пользователь с email не найден");
+                } else {
+                    throw new Error("что-то пошло не так");
+                }
+            })
+            .catch((e) => console.log(e));
+    }
 
     return (
-        <>
+        <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
                 <Switch>
                     <Route exact path="/signin">
-                        <Login />
+                        <Login handleLogin={handleLogin}/>
                     </Route>
                     <Route exact path="/signup">
-                        <Register />
+                        <Register handleRegister={handleRegister} />
                     </Route>
                     <Route exact path="/profile">
                         <Profile loggedIn={loggedIn} />
                     </Route>
                     <Route exact path="/movies">
-                        <Movies
-                            loggedIn={loggedIn}
-                        />
+                        <Movies loggedIn={loggedIn} />
                     </Route>
                     <Route exact path="/saved-movies">
                         <SavedMovies loggedIn={loggedIn} />
@@ -41,12 +96,19 @@ const App = () => {
                     <Route exact path="/">
                         <Main loggedIn={loggedIn} />
                     </Route>
+                    <Route>
+                        {loggedIn ? (
+                            <Redirect to="/movies" />
+                        ) : (
+                            <Redirect to="/signin" />
+                        )}
+                    </Route>
                     <Route path="*">
                         <NotFound />
                     </Route>
                 </Switch>
             </div>
-        </>
+        </CurrentUserContext.Provider>
     );
 };
 
