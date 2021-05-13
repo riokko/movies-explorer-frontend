@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Switch, Route, Redirect} from "react-router-dom";
+import {Switch, Route, Redirect, useHistory} from "react-router-dom";
 
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -17,12 +17,15 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
 
+    const history = useHistory();
+
     function tokenCheck() {
         const token = localStorage.getItem("token");
         if (!token) {
             return;
         }
         setLoggedIn(true);
+        history.push("/movies");
         mainApi
             .getUserData(token)
             .then((res) => {
@@ -50,6 +53,8 @@ const App = () => {
             .register(name, email, password)
             .then((data) => {
                 console.log("register data", data);
+                history.push("/movies");
+                setLoggedIn(true);
             })
             .catch((e) => console.log(e));
     }
@@ -74,6 +79,10 @@ const App = () => {
             .catch((e) => console.log(e));
     }
 
+    function handleMovieLike() {
+        console.log('click')
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
@@ -88,7 +97,7 @@ const App = () => {
                         <Profile loggedIn={loggedIn} />
                     </Route>
                     <Route exact path="/movies">
-                        <Movies loggedIn={loggedIn} />
+                        <Movies loggedIn={loggedIn} handleMovieLike={handleMovieLike}/>
                     </Route>
                     <Route exact path="/saved-movies">
                         <SavedMovies loggedIn={loggedIn} />
