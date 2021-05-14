@@ -1,4 +1,5 @@
 // const BASE_URL = "https://api.movie.nomoredomains.icu";
+
 const BASE_URL = "http://localhost:3001";
 
 class MainApi {
@@ -59,6 +60,66 @@ class MainApi {
             },
         })
             .then((response) => response)
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    getLikedMovies(token) {
+        return fetch(`${this._baseUrl}/movies`, {
+            method: "GET",
+            headers: {
+                "Content-Type": this._mimeType,
+                Authorization: `Bearer ${token}`,
+            }
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
+                .catch((e) => console.log(e)),
+        });
+    }
+
+    like(movie, token) {
+        return fetch(`${this._baseUrl}/movies`, {
+            method: "POST",
+            headers: {
+                "Content-Type": this._mimeType,
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                movieId: movie.movieId,
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: movie.image,
+                trailer: movie.trailerLink,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                return Promise.reject(new Error(`${response.status}`));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    dislike(id, token) {
+        return fetch(`${this._baseUrl}/movies`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
     }
 }
 
