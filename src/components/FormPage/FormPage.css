@@ -67,7 +67,7 @@
 
 .form-page__error {
     color: #ee3465;
-    margin-top: 10px;
+    margin-top: 3px;
 }
 
 .form-page__button {
@@ -88,6 +88,11 @@
 
 .form-page__button:hover {
     opacity: 0.8;
+}
+.form-page__button:disabled {
+    color: black;
+    background: #F8F8F8;
+    cursor: default;
 }
 
 .form-page__under-button-text {

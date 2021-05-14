@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React from "react";
 // import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import Row from "../Row";
@@ -7,22 +7,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
-const movies = [
-    {
-        name: "33 слова о дизайне",
-        duration: 107,
-        like: true,
-        thumbnail: "https://ic.wampi.ru/2021/05/06/first_movie.jpg",
-    },
-    {
-        name: "В погоне за Бенкси",
-        duration: 102,
-        like: true,
-        thumbnail: "https://ic.wampi.ru/2021/05/06/third_movie.png",
-    },
-];
-
-function SavedMovies({ loggedIn }) {
+function SavedMovies({ loggedIn, likedMovies, setLikedMovies }) {
     // const currentUser = useContext(CurrentUserContext);
 
     return (
@@ -30,7 +15,7 @@ function SavedMovies({ loggedIn }) {
                 <Header loggedIn={loggedIn} />
                 <Row>
                     <SearchForm />
-                    <MoviesCardList movies={movies} isSavedPage />
+                    <MoviesCardList movies={likedMovies} likedMovies={likedMovies} setLikedMovies={setLikedMovies} isSavedPage />
                     <Footer />
                 </Row>
             </div>
