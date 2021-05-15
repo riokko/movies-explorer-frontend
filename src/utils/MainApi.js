@@ -40,12 +40,7 @@ class MainApi {
             },
             body: JSON.stringify({ email, password }),
         })
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                }
-                return Promise.reject(new Error(`${response.status}`));
-            })
+            .then((response) => response)
             .catch((err) => {
                 console.log(err);
             });
@@ -71,14 +66,10 @@ class MainApi {
             headers: {
                 "Content-Type": this._mimeType,
                 Authorization: `Bearer ${token}`,
-            }
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                })
-                .catch((e) => console.log(e)),
-        });
+            },
+        })
+            .then((response) => response.json())
+            .catch((e) => console.log(e));
     }
 
     like(movie, token) {
@@ -89,7 +80,7 @@ class MainApi {
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-                movieId: movie.movieId,
+                movieId: movie.id,
                 country: movie.country,
                 director: movie.director,
                 duration: movie.duration,
