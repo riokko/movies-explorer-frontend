@@ -8,7 +8,7 @@ const FORM_INPUTS = {
     password: "password",
 };
 
-function Register({ handleRegister, handleLogin, setLoggedIn }) {
+function Register({ handleRegister, handleLogin }) {
     const { register, handleSubmit, formState } = useForm({
         mode: "onChange",
     });

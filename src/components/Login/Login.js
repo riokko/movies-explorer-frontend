@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormPage from "../FormPage/FormPage";
 import { useForm } from "react-hook-form";
 
+const FORM_INPUTS = {
+    email: "email",
+    password: "password",
+};
 
 function Login({ handleLogin }) {
+    const { register, handleSubmit, formState } = useForm({
+        mode: "onChange",
+    });
+    const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+    const { errors } = formState;
     const [data, setData] = useState({
         email: "",
         password: "",
@@ -17,13 +26,32 @@ function Login({ handleLogin }) {
         });
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        const { email, password } = data;
+    useEffect(() => {
+        Object.values(FORM_INPUTS).every((input) => {
+            // console.log(
+            //     "formState.touchedFields:",
+            //     Object.keys(formState.touchedFields)
+            // );
+            return Object.keys(formState.touchedFields).includes(input);
+        });
+        setButtonIsDisabled(
+            !(
+                formState.isValid &&
+                Object.values(FORM_INPUTS).every((input) =>
+                    Object.keys(formState.touchedFields).includes(input)
+                )
+            )
+        );
+    }, [formState]);
 
-        if (!email || !password) {
-            return;
-        }
+    function onSubmit(data) {
+        // e.preventDefault();
+        // const { email, password } = data;
+        //
+        // if (!email || !password) {
+        //     return;
+        // }
+        const { email, password } = data;
         handleLogin(email, password);
     }
 
@@ -34,7 +62,8 @@ function Login({ handleLogin }) {
             underButtonText={"Ещё не зарегистрированы?"}
             underButtonLink={"/signup"}
             underButtonTextLink={"Регистрация"}
-            handleSubmit={handleSubmit}
+            handleSubmit={handleSubmit(onSubmit)}
+            buttonDisabled={buttonIsDisabled}
         >
             <label htmlFor="email" className="form-page__label">
                 E-mail
@@ -42,14 +71,23 @@ function Login({ handleLogin }) {
                     type="email"
                     className="form-page__input"
                     placeholder="pochta@yandex.ru"
-                    id="login-email"
-                    required
                     name="email"
-                    onChange={handleChange}
+                    {...register(FORM_INPUTS.email, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "Enter a valid e-mail address",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="login-email-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.email] && (
+                    <span className="form-page__error" id="login-email-error">
+                        {errors[FORM_INPUTS.email].message}
+                    </span>
+                )}
             </label>
 
             <label htmlFor="password" className="form-page__label">
@@ -57,16 +95,26 @@ function Login({ handleLogin }) {
                 <input
                     type="password"
                     className="form-page__input"
-                    id="login-password"
+                    autoComplete="on"
                     placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-                    required
-                    minLength="2"
                     name="password"
-                    onChange={handleChange}
+                    {...register(FORM_INPUTS.password, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        minLength: {
+                            value: 6,
+                            message:
+                                "Пароль должен содержать не менее 6 символов",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="login-password-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.password] && (
+                    <span className="form-page__error">
+                        {errors[FORM_INPUTS.password].message}
+                    </span>
+                )}
             </label>
         </FormPage>
     );
