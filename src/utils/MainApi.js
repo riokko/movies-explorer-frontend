@@ -104,7 +104,7 @@ class MainApi {
     }
 
     dislike(id, token) {
-        return fetch(`${this._baseUrl}/movies`, {
+        return fetch(`${this._baseUrl}/movies/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Movies.css";
 
 import Row from "../Row";
@@ -23,7 +23,7 @@ const LOADING_MOVIES_CONFIG = {
     },
 };
 
-function Movies({ loggedIn, handleMovieLike }) {
+function Movies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
     const [isLoading, setIsLoading] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
     const [numberOfDownloadedMovies, setNumberOfDownloadedMovies] = useState(
@@ -49,16 +49,17 @@ function Movies({ loggedIn, handleMovieLike }) {
             ),
         ]);
     };
-
     useEffect(() => {
         if (!isFirstRender.current) {
-            const savedMovies = JSON.parse(localStorage.getItem("filteredMovies") || "[]")
+            const savedMovies = JSON.parse(
+                localStorage.getItem("filteredMovies") || "[]"
+            );
+            if (savedMovies.length > 0) setMovies(savedMovies);
 
-            if (savedMovies.length > 0)
-            setMovies(savedMovies)
             isFirstRender.current = true;
         }
-    }, [movies])
+    }, [movies]);
+
 
     useEffect(() => {
         if (shownMovies.length === movies.length) {
@@ -67,7 +68,6 @@ function Movies({ loggedIn, handleMovieLike }) {
     }, [shownMovies, movies]);
 
     useEffect(() => {
-
         setShownMovies(movies.slice(0, numberOfDownloadedMovies));
         setShowMore(true);
     }, [movies, numberOfDownloadedMovies]);
@@ -93,10 +93,10 @@ function Movies({ loggedIn, handleMovieLike }) {
             setTimeout(setNewWidth, 600);
         }
 
-        window.addEventListener('resize', handleScreenResize);
+        window.addEventListener("resize", handleScreenResize);
 
         return () => {
-            window.removeEventListener('resize', handleScreenResize);
+            window.removeEventListener("resize", handleScreenResize);
         };
     }, []);
 
@@ -116,7 +116,9 @@ function Movies({ loggedIn, handleMovieLike }) {
                 />
                 <MoviesCardList
                     movies={shownMovies}
-                    handleMovieLike={handleMovieLike}
+                    likedMovies={likedMovies}
+                    setLikedMovies={setLikedMovies}
+                    fetchLikedMovies={fetchLikedMovies}
                 />
                 {isLoading && <Preloader />}
                 {movies.length > 0 && showMore && (

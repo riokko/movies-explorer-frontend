@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MoviesCard.css";
 import classnames from "classnames";
 import noCover from "../../images/no-thumb.png";
 
 import { BASE_URL } from "../../utils/MoviesApi";
+import mainApi from "../../utils/MainApi";
 
 function MoviesCard({
-    data: { _id, nameRU, duration, like, image, trailerLink },
+    movie,
     isSavedPage,
-    handleMovieLike,
+    setLikedMovies,
+    likedMovies,
+    fetchLikedMovies,
 }) {
+    const {
+        id,
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+    } = movie;
     const imageUrl = image ? `${BASE_URL}${image.url}` : noCover;
+    const token = localStorage.getItem("token");
+    const [isLiked, setIsLiked] = useState(false);
+    const [likedMovie, setLikedMovie] = useState(null);
 
     function time_convert(num) {
         const hours = Math.floor(num / 60);
@@ -18,12 +36,66 @@ function MoviesCard({
         return hours + "ч " + minutes + "м ";
     }
 
+    useEffect(() => {
+        const likedMovie = likedMovies.filter(
+            (likedMovie) => likedMovie.movieId === movie.id
+        );
+        setIsLiked(likedMovie.length > 0);
+        setLikedMovie(likedMovie[0]);
+    }, [isLiked, likedMovies, movie.id]);
+
+    function movieLike() {
+        mainApi
+            .like(
+                {
+                    id,
+                    country,
+                    director,
+                    duration,
+                    year,
+                    description,
+                    image: imageUrl,
+                    trailerLink,
+                    nameRU,
+                    nameEN,
+                },
+                token
+            )
+            .then((res) => {
+                setIsLiked(true);
+                setLikedMovies([...likedMovies, res]);
+                setLikedMovie(res[0])
+            })
+            .catch((err) => console.log(err));
+    }
+
+    function movieDislike() {
+        console.log(likedMovie);
+        mainApi
+            .dislike(likedMovie._id, token)
+            .then(() => {
+                setIsLiked(false);
+                setLikedMovie(null);
+                fetchLikedMovies();
+            })
+            .catch((err) => console.log(err));
+    }
+
+    function handleLikeButton() {
+        if (isLiked) {
+            movieDislike();
+        } else {
+            movieLike();
+        }
+    }
+
     return (
         <li className="movies-card">
             <a
                 href={trailerLink}
-                className="movies-card__trailer-link"
+                className="movies-card__trailer-link "
                 target="_blank"
+                rel="noreferrer"
             >
                 <img
                     className="movies-card__thumbnail"
@@ -36,10 +108,12 @@ function MoviesCard({
                 <div
                     className={classnames("movies-card__control", {
                         "movies-card__control_delete": isSavedPage,
-                        "movies-card__control_liked": !isSavedPage && like,
-                        "movies-card__control_not-liked": !isSavedPage && !like,
+                        "movies-card__control_liked":
+                            !isSavedPage && isLiked === true,
+                        "movies-card__control_not-liked":
+                            !isSavedPage && isLiked === false,
                     })}
-                    onClick={handleMovieLike}
+                    onClick={handleLikeButton}
                 />
             </div>
             <p className="movies-card__duration">{time_convert(duration)}</p>
