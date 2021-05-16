@@ -1,26 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormPage from "../FormPage/FormPage";
+import { useForm } from "react-hook-form";
 
-function Register({ handleRegister }) {
-    const [data, setData] = useState({
-        name: "",
-        email: "",
-        password: "",
+const FORM_INPUTS = {
+    name: "name",
+    email: "email",
+    password: "password",
+};
+
+function Register({ handleRegister, handleLogin, setLoggedIn }) {
+    const { register, handleSubmit, formState } = useForm({
+        mode: "onChange",
     });
+    const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+    const { errors } = formState;
 
-    function handleChange(e) {
-        const { name, value } = e.target;
-        setData({
-            ...data,
-            [name]: value,
+    function onSubmit(data) {
+        const { name, email, password } = data;
+        handleRegister(name, email, password).then(() => {
+            handleLogin(email, password);
         });
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        const { name, email, password } = data;
-        handleRegister(name, email, password);
-    }
+    useEffect(() => {
+        Object.values(FORM_INPUTS).every((input) => {
+            console.log(
+                "formState.touchedFields:",
+                Object.keys(formState.touchedFields)
+            );
+            return Object.keys(formState.touchedFields).includes(input);
+        });
+        setButtonIsDisabled(
+            !(
+                formState.isValid &&
+                Object.values(FORM_INPUTS).every((input) =>
+                    Object.keys(formState.touchedFields).includes(input)
+                )
+            )
+        );
+    }, [formState]);
 
     return (
         <FormPage
@@ -29,7 +47,8 @@ function Register({ handleRegister }) {
             underButtonText={"Уже зарегистрированы?"}
             underButtonLink={"/signin"}
             underButtonTextLink={"Войти"}
-            handleSubmit={handleSubmit}
+            handleSubmit={handleSubmit(onSubmit)}
+            buttonDisabled={buttonIsDisabled}
         >
             <label htmlFor="name" className="form-page__label">
                 Имя
@@ -37,14 +56,24 @@ function Register({ handleRegister }) {
                     type="text"
                     className="form-page__input"
                     placeholder="Виталий"
-                    id="reg-name"
-                    required
-                    onChange={handleChange}
                     name="name"
+                    {...register(FORM_INPUTS.name, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        pattern: {
+                            value: /^[а-яёa-z\s\-]+$/i,
+                            message:
+                                "Поле имя может содержать только буквы или дефис",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="reg-name-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.name] && (
+                    <span className="form-page__error">
+                        {errors[FORM_INPUTS.name].message}
+                    </span>
+                )}
             </label>
 
             <label htmlFor="email" className="form-page__label">
@@ -53,14 +82,22 @@ function Register({ handleRegister }) {
                     type="email"
                     className="form-page__input"
                     placeholder="pochta@yandex.ru"
-                    id="reg-email"
-                    required
-                    onChange={handleChange}
-                    name="email"
+                    {...register(FORM_INPUTS.email, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "Enter a valid e-mail address",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="reg-email-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.email] && (
+                    <span className="form-page__error">
+                        {errors[FORM_INPUTS.email].message}
+                    </span>
+                )}
             </label>
 
             <label htmlFor="password" className="form-page__label">
@@ -68,17 +105,26 @@ function Register({ handleRegister }) {
                 <input
                     type="password"
                     className="form-page__input"
-                    id="reg-password"
                     autoComplete="on"
                     placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-                    required
-                    minLength="2"
-                    onChange={handleChange}
                     name="password"
+                    {...register(FORM_INPUTS.password, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        minLength: {
+                            value: 6,
+                            message:
+                                "Пароль должен содержать не менее 6 символов",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="reg-password-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.password] && (
+                    <span className="form-page__error">
+                        {errors[FORM_INPUTS.password].message}
+                    </span>
+                )}
             </label>
         </FormPage>
     );

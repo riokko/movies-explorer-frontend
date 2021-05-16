@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {Switch, Route, Redirect, useHistory} from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -16,11 +16,11 @@ import NotFound from "../NotFound/NotFound";
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
+    const [likedMovies, setLikedMovies] = React.useState([]);
 
     const history = useHistory();
-
+    const token = localStorage.getItem("token");
     function tokenCheck() {
-        const token = localStorage.getItem("token");
         if (!token) {
             return;
         }
@@ -29,7 +29,6 @@ const App = () => {
         mainApi
             .getUserData(token)
             .then((res) => {
-                console.log(res)
                 if (res.status === 401) {
                     throw new Error(
                         "Токен не передан или передан не в том формате"
@@ -43,32 +42,45 @@ const App = () => {
             .then((res) => {
                 const data = res.email ? res : {};
                 setCurrentUser(data);
+                fetchLikedMovies();
             })
             // eslint-disable-next-line no-console
             .catch((e) => console.log(e));
     }
 
-    function handleRegister(name, email, password) {
+    function fetchLikedMovies() {
         mainApi
-            .register(name, email, password)
+            .getLikedMovies(token)
             .then((data) => {
-                console.log("register data", data);
-                history.push("/movies");
-                setLoggedIn(true);
+                setLikedMovies(data);
             })
-            .catch((e) => console.log(e));
+            .catch((e) => {
+                console.log(e);
+                setLikedMovies([]);
+            });
+    }
+
+    const firstRender = useRef(true);
+    useEffect(() => {
+        if (firstRender.current) {
+            tokenCheck();
+            firstRender.current = false;
+        }
+    });
+
+    function handleRegister(name, email, password) {
+        return mainApi
+            .register(name, email, password)
     }
 
     function handleLogin(email, password) {
         mainApi
             .login(email, password)
             .then((data) => {
-                if (data.token) {
-                    mainApi.setToken(data.token);
-                    setLoggedIn(true);
-                    localStorage.setItem("token", data.token);
-                    tokenCheck();
-                } else if (data.status === 400) {
+                if (data.ok) {
+                    return data.json();
+                }
+                if (data.status === 400) {
                     throw new Error("не передано одно из полей");
                 } else if (data.status === 401) {
                     throw new Error("пользователь с email не найден");
@@ -76,11 +88,16 @@ const App = () => {
                     throw new Error("что-то пошло не так");
                 }
             })
+            .then(({ token }) => {
+                if (token) {
+                    mainApi.setToken(token);
+                    tokenCheck();
+                    localStorage.setItem("token", token);
+                    setLoggedIn(true);
+                    history.push("/movies");
+                }
+            })
             .catch((e) => console.log(e));
-    }
-
-    function handleMovieLike() {
-        console.log('click')
     }
 
     return (
@@ -88,19 +105,32 @@ const App = () => {
             <div className="page__content">
                 <Switch>
                     <Route exact path="/signin">
-                        <Login handleLogin={handleLogin}/>
+                        <Login handleLogin={handleLogin} />
                     </Route>
                     <Route exact path="/signup">
-                        <Register handleRegister={handleRegister} />
+                        <Register
+                            handleRegister={handleRegister}
+                            handleLogin={handleLogin}
+                            setLoggedIn={setLoggedIn}
+                        />
                     </Route>
                     <Route exact path="/profile">
                         <Profile loggedIn={loggedIn} />
                     </Route>
                     <Route exact path="/movies">
-                        <Movies loggedIn={loggedIn} handleMovieLike={handleMovieLike}/>
+                        <Movies
+                            loggedIn={loggedIn}
+                            likedMovies={likedMovies}
+                            setLikedMovies={setLikedMovies}
+                            fetchLikedMovies={fetchLikedMovies}
+                        />
                     </Route>
                     <Route exact path="/saved-movies">
-                        <SavedMovies loggedIn={loggedIn} />
+                        <SavedMovies
+                            loggedIn={loggedIn}
+                            likedMovies={likedMovies}
+                            setLikedMovies={setLikedMovies}
+                        />
                     </Route>
                     <Route exact path="/">
                         <Main loggedIn={loggedIn} />
