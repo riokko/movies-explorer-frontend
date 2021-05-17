@@ -12,9 +12,8 @@ function FormPage({
     underButtonTextLink,
     children,
     handleSubmit,
-    buttonDisabled,
+    buttonIsDisabled,
 }) {
-    console.log("buttonDisabled", buttonDisabled);
     return (
         <div className="form-page">
             <Row>
@@ -35,7 +34,7 @@ function FormPage({
                             form="form-page"
                             className="form-page__button"
                             type="submit"
-                            disabled={buttonDisabled}
+                            disabled={buttonIsDisabled}
                             // onClick={handleSubmit}
                         >
                             {buttonText}

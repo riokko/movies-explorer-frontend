@@ -23,13 +23,6 @@ function Register({ handleRegister, handleLogin }) {
     }
 
     useEffect(() => {
-        Object.values(FORM_INPUTS).every((input) => {
-            console.log(
-                "formState.touchedFields:",
-                Object.keys(formState.touchedFields)
-            );
-            return Object.keys(formState.touchedFields).includes(input);
-        });
         setButtonIsDisabled(
             !(
                 formState.isValid &&
@@ -48,7 +41,7 @@ function Register({ handleRegister, handleLogin }) {
             underButtonLink={"/signin"}
             underButtonTextLink={"Войти"}
             handleSubmit={handleSubmit(onSubmit)}
-            buttonDisabled={buttonIsDisabled}
+            buttonIsDisabled={buttonIsDisabled}
         >
             <label htmlFor="name" className="form-page__label">
                 Имя
@@ -63,7 +56,7 @@ function Register({ handleRegister, handleLogin }) {
                             message: "Поле не может быть пустым",
                         },
                         pattern: {
-                            value: /^[а-яёa-z\s\-]+$/i,
+                            value: /^[а-яёa-z\s-]+$/i,
                             message:
                                 "Поле имя может содержать только буквы или дефис",
                         },
@@ -89,7 +82,7 @@ function Register({ handleRegister, handleLogin }) {
                         },
                         pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                            message: "Enter a valid e-mail address",
+                            message: "Введите корректный адрес электронной почты",
                         },
                     })}
                 />

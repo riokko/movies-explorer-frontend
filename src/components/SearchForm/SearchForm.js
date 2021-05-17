@@ -4,6 +4,8 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 import moviesApi from "../../utils/MoviesApi";
 
+// TODO поиск корометражек
+
 function SearchForm({
     setMovies,
     handleIsLoading,
@@ -25,19 +27,20 @@ function SearchForm({
         }
     }, [inputValue]);
 
-    function fetchData(searchText, loadingSetter) {
+    const filterSearch = (movie, searchText) => {
+        // Возвращает true, если значение searchText есть в описании к фильму или в названиях
+        const regex = new RegExp(searchText, "gi");
+        return (
+            regex.test(movie.description) ||
+            regex.test(movie.nameRU) ||
+            regex.test(movie.nameEN)
+        );
+    };
+
+    const fetchData = (searchText, loadingSetter) => {
         moviesApi
             .getMoviesListFromApi()
             .then((movies) => {
-                const filterSearch = (movie, searchText) => {
-                    // Возвращает true, если значение searchText есть в описании к фильму или в названиях
-                    const regex = new RegExp(searchText, "gi");
-                    return (
-                        regex.test(movie.description) ||
-                        regex.test(movie.nameRU) ||
-                        regex.test(movie.nameEN)
-                    );
-                };
                 const filteredMovies = movies.filter((movie) =>
                     filterSearch(movie, inputValue)
                 );
@@ -56,14 +59,14 @@ function SearchForm({
                 loadingSetter(false);
                 setShowSearchError(true);
             });
-    }
+    };
 
-    function handleChange(e) {
+    const handleChange = (e) => {
         setInputValue(e.target.value);
         setShowError(false);
-    }
+    };
 
-    function handleSubmitSearchForm(e) {
+    const handleSubmitSearchForm = (e) => {
         console.log();
         e.preventDefault();
         if (!inputRef.current.validity.valid) {
@@ -73,7 +76,7 @@ function SearchForm({
             localStorage.setItem("searchInput", inputValue); // поисковый запрос обновляется в локальном хранилище
             fetchData(inputValue, handleIsLoading);
         }
-    }
+    };
 
     return (
         <div className="search-form">

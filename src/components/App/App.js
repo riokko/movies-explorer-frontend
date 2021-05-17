@@ -17,6 +17,7 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [likedMovies, setLikedMovies] = React.useState([]);
+    const [messageForForm, setMessageForForm] = React.useState("");
 
     const history = useHistory();
     const token = localStorage.getItem("token");
@@ -69,8 +70,7 @@ const App = () => {
     });
 
     function handleRegister(name, email, password) {
-        return mainApi
-            .register(name, email, password)
+        return mainApi.register(name, email, password);
     }
 
     function handleLogin(email, password) {
@@ -100,6 +100,26 @@ const App = () => {
             .catch((e) => console.log(e));
     }
 
+    const updateUserData = ({ name, email }) => {
+        mainApi
+            .editUserData({ name, email }, token)
+            .then(() => {
+                tokenCheck();
+            })
+            .catch(() => {
+                setMessageForForm("При обновлении профиля произошла ошибка");
+            });
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('movies');
+        localStorage.removeItem('searchKey');
+        setLoggedIn(false);
+        history.push('/signin');
+        setCurrentUser({});
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page__content">
@@ -115,7 +135,12 @@ const App = () => {
                         />
                     </Route>
                     <Route exact path="/profile">
-                        <Profile loggedIn={loggedIn} />
+                        <Profile
+                            loggedIn={loggedIn}
+                            updateUserData={updateUserData}
+                            message={messageForForm}
+                            handleLogout={handleLogout}
+                        />
                     </Route>
                     <Route exact path="/movies">
                         <Movies

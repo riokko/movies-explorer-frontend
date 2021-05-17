@@ -4,7 +4,7 @@ import "./MoviesCardList.css";
 
 function MoviesCardList({
     movies,
-    isSavedPage = false,
+    isSavedPage,
     setLikedMovies,
     likedMovies,
     fetchLikedMovies,

@@ -119,6 +119,7 @@ function Movies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
                     likedMovies={likedMovies}
                     setLikedMovies={setLikedMovies}
                     fetchLikedMovies={fetchLikedMovies}
+                    isSavedPage ={false}
                 />
                 {isLoading && <Preloader />}
                 {movies.length > 0 && showMore && (

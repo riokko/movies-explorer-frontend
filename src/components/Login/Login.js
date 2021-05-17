@@ -13,18 +13,6 @@ function Login({ handleLogin }) {
     });
     const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
     const { errors } = formState;
-    const [data, setData] = useState({
-        email: "",
-        password: "",
-    });
-
-    function handleChange(e) {
-        const { name, value } = e.target;
-        setData({
-            ...data,
-            [name]: value,
-        });
-    }
 
     useEffect(() => {
         Object.values(FORM_INPUTS).every((input) => {
@@ -45,12 +33,6 @@ function Login({ handleLogin }) {
     }, [formState]);
 
     function onSubmit(data) {
-        // e.preventDefault();
-        // const { email, password } = data;
-        //
-        // if (!email || !password) {
-        //     return;
-        // }
         const { email, password } = data;
         handleLogin(email, password);
     }
@@ -63,7 +45,7 @@ function Login({ handleLogin }) {
             underButtonLink={"/signup"}
             underButtonTextLink={"Регистрация"}
             handleSubmit={handleSubmit(onSubmit)}
-            buttonDisabled={buttonIsDisabled}
+            buttonIsDisabled={buttonIsDisabled}
         >
             <label htmlFor="email" className="form-page__label">
                 E-mail
@@ -79,7 +61,7 @@ function Login({ handleLogin }) {
                         },
                         pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                            message: "Enter a valid e-mail address",
+                            message: "Введите корректный адрес электронной почты",
                         },
                     })}
                 />

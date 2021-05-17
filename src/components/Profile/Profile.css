@@ -58,11 +58,24 @@
     background-color: #2f2f2f;
 }
 
+.profile__error {
+    color: #ee3465;
+}
+
+.profile__status-message {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 12px;
+    color: #ee3465;
+    padding-bottom: 10px ;
+}
+
 .profile__buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 48px;
+    height: 60px;
     justify-content: space-between;
 }
 
@@ -86,6 +99,31 @@
 
 .profile__button_type_logout {
     color: #ee3465;
+}
+
+.profile__button_type_save {
+    height: 45px;
+    width: 100%;
+    margin-top: auto;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    color: white;
+    border: 0;
+    border-radius: 3px;
+    background: #4285f4;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    outline: 0;
+}
+
+.profile__button_type_save:hover {
+    opacity: 0.8;
+}
+.profile__button_type_save:disabled {
+    color: black;
+    background: #F8F8F8;
+    cursor: default;
 }
 
 @media screen and (max-width: 450px) {

@@ -1,13 +1,54 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Row from "../Row";
 import "./Profile.css";
 import Header from "../Header/Header";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useForm } from "react-hook-form";
 
-function Profile({ loggedIn }) {
+// TODO Исправить форвард страницы при сохранении данных
+
+const FORM_INPUTS = {
+    name: "name",
+    email: "email",
+};
+
+function Profile({ loggedIn, updateUserData, message, handleLogout }) {
     const currentUser = useContext(CurrentUserContext);
     const [name, setName] = React.useState(currentUser.name);
     const [email, setEmail] = React.useState(currentUser.email);
+    const [inEditing, setInEditing] = useState(false);
+
+    const { register, handleSubmit, formState } = useForm({
+        mode: "onChange",
+        defaultValues: {
+            name: name,
+            email: email,
+        },
+    });
+    const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+    const { errors } = formState;
+
+    function handleOpenEditingForm() {
+        setInEditing(true);
+    }
+
+    function onSubmit(data, e) {
+        e.preventDefault();
+        console.log(e)
+        const { name, email } = data;
+        updateUserData({ name, email });
+    }
+
+    useEffect(() => {
+        setButtonIsDisabled(
+            !(
+                formState.isValid &&
+                Object.values(FORM_INPUTS).every((input) =>
+                    Object.keys(formState.touchedFields).includes(input)
+                )
+            )
+        );
+    }, [formState]);
 
     return (
         <>
@@ -15,49 +56,101 @@ function Profile({ loggedIn }) {
             <div className="profile">
                 <Row>
                     <h1 className="profile__title">Привет, {name}!</h1>
-                    <form className="profile__form" id="profile">
+                    <form
+                        className="profile__form"
+                        id="profile"
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
                         <label className="profile__label" htmlFor="name">
                             Имя
                             <input
+                                disabled={!inEditing}
                                 className="profile__input"
                                 type="text"
-                                id="name"
-                                value={name}
-                                required
                                 onChange={(e) => {
                                     setName(e.target.value);
                                 }}
+                                {...register(FORM_INPUTS.name, {
+                                    required: {
+                                        value: true,
+                                        message: "Поле не может быть пустым",
+                                    },
+                                    pattern: {
+                                        value: /^[а-яёa-z\s-]+$/i,
+                                        message:
+                                            "Поле имя может содержать только буквы или дефис",
+                                    },
+                                })}
                             />
                         </label>
+                        {errors[FORM_INPUTS.name] && (
+                            <span className="profile__error">
+                                {errors[FORM_INPUTS.name].message}
+                            </span>
+                        )}
                         <hr className="profile__divider" />
                         <label className="profile__label" htmlFor="email">
-                            Почта
+                            E-mail
                             <input
+                                disabled={!inEditing}
                                 className="profile__input"
                                 type="text"
-                                id="email"
-                                value={email}
-                                required
                                 onChange={(e) => {
                                     setEmail(e.target.value);
                                 }}
+                                {...register(FORM_INPUTS.email, {
+                                    required: {
+                                        value: true,
+                                        message: "Поле не может быть пустым",
+                                    },
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                        message:
+                                            "Введите корректный адрес электронной почты",
+                                    },
+                                })}
                             />
                         </label>
+                        {errors[FORM_INPUTS.email] && (
+                            <span className="profile__error">
+                                {errors[FORM_INPUTS.email].message}
+                            </span>
+                        )}
                     </form>
                     <div className="profile__buttons">
-                        <button
-                            className="profile__button"
-                            type="submit"
-                            form="profile"
-                        >
-                            Редактировать
-                        </button>
-                        <button
-                            className="profile__button profile__button_type_logout"
-                            type="button"
-                        >
-                            Выйти из аккаунта
-                        </button>
+                        {inEditing ? (
+                            <>
+                                <span className="profile__status-message">
+                                    {message}
+                                </span>
+                                <button
+                                    className="profile__button_type_save"
+                                    disabled={buttonIsDisabled}
+                                    form="profile"
+                                    type="submit"
+                                    onSubmit={handleSubmit(onSubmit)}
+                                >
+                                    Сохранить
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button
+                                    className="profile__button"
+                                    type="button"
+                                    onClick={handleOpenEditingForm}
+                                >
+                                    Редактировать
+                                </button>
+                                <button
+                                    className="profile__button profile__button_type_logout"
+                                    type="button"
+                                    onClick={handleLogout}
+                                >
+                                    Выйти из аккаунта
+                                </button>
+                            </>
+                        )}
                     </div>
                 </Row>
             </div>

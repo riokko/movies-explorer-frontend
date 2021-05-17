@@ -60,6 +60,19 @@ class MainApi {
             });
     }
 
+    editUserData({ name, email }, token) {
+        return fetch(`${this._baseUrl}/users/me`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": this._mimeType,
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ name, email }),
+        })
+            .then((response) => response)
+            .catch((err) => console.log(err));
+    }
+
     getLikedMovies(token) {
         return fetch(`${this._baseUrl}/movies`, {
             method: "GET",
