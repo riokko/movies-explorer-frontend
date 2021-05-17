@@ -12,6 +12,7 @@ import Profile from "../Profile/Profile";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -112,13 +113,13 @@ const App = () => {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem('jwt');
-        localStorage.removeItem('movies');
-        localStorage.removeItem('searchKey');
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("movies");
+        localStorage.removeItem("searchKey");
         setLoggedIn(false);
-        history.push('/signin');
+        history.push("/signin");
         setCurrentUser({});
-    }
+    };
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -134,32 +135,37 @@ const App = () => {
                             setLoggedIn={setLoggedIn}
                         />
                     </Route>
-                    <Route exact path="/profile">
-                        <Profile
-                            loggedIn={loggedIn}
-                            updateUserData={updateUserData}
-                            message={messageForForm}
-                            handleLogout={handleLogout}
-                        />
-                    </Route>
-                    <Route exact path="/movies">
-                        <Movies
-                            loggedIn={loggedIn}
-                            likedMovies={likedMovies}
-                            setLikedMovies={setLikedMovies}
-                            fetchLikedMovies={fetchLikedMovies}
-                        />
-                    </Route>
-                    <Route exact path="/saved-movies">
-                        <SavedMovies
-                            loggedIn={loggedIn}
-                            likedMovies={likedMovies}
-                            setLikedMovies={setLikedMovies}
-                        />
-                    </Route>
-                    <Route exact path="/">
-                        <Main loggedIn={loggedIn} />
-                    </Route>
+                    <ProtectedRoute
+                        path="/profile"
+                        component={Profile}
+                        loggedIn={loggedIn}
+                        updateUserData={updateUserData}
+                        message={messageForForm}
+                        handleLogout={handleLogout}
+                        setCurrentUser={setCurrentUser}
+                    />
+                    <ProtectedRoute
+                        path="/movies"
+                        component={Movies}
+                        loggedIn={loggedIn}
+                        likedMovies={likedMovies}
+                        setLikedMovies={setLikedMovies}
+                        fetchLikedMovies={fetchLikedMovies}
+                    />
+                    <ProtectedRoute
+                        path="/saved-movies"
+                        component={SavedMovies}
+                        loggedIn={loggedIn}
+                        likedMovies={likedMovies}
+                        setLikedMovies={setLikedMovies}
+                        fetchLikedMovies={fetchLikedMovies}
+                    />
+                    <ProtectedRoute
+                        path="/"
+                        loggedIn={loggedIn}
+                        component={Main}
+                    />
+                    >
                     <Route>
                         {loggedIn ? (
                             <Redirect to="/movies" />
