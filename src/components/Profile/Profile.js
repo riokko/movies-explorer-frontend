@@ -12,7 +12,13 @@ const FORM_INPUTS = {
     email: "email",
 };
 
-function Profile({ loggedIn, updateUserData, message, handleLogout }) {
+function Profile({
+    loggedIn,
+    updateUserData,
+    message,
+    handleLogout,
+    setCurrentUser,
+}) {
     const currentUser = useContext(CurrentUserContext);
     const [name, setName] = React.useState(currentUser.name);
     const [email, setEmail] = React.useState(currentUser.email);
@@ -34,9 +40,10 @@ function Profile({ loggedIn, updateUserData, message, handleLogout }) {
 
     function onSubmit(data, e) {
         e.preventDefault();
-        console.log(e)
+        console.log(e);
         const { name, email } = data;
         updateUserData({ name, email });
+        setCurrentUser({ name, email });
     }
 
     useEffect(() => {
