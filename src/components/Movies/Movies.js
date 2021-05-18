@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Movies.css";
 
 import Row from "../Row";
@@ -7,6 +7,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Preloader from "../Preloader/Preloader";
+import useGetMoviesHook from "../../utils/useGetMoviesHook";
 
 const LOADING_MOVIES_CONFIG = {
     large: {
@@ -37,8 +38,7 @@ function Movies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
     const [movies, setMovies] = useState([]);
     const [nothingFound, setNothingFound] = useState(false);
     const [showSearchError, setShowSearchError] = useState(false);
-
-    const isFirstRender = useRef(false);
+    const [moviesFromApi, setMoviesFromApi] = useState([]);
 
     const handleShowMore = () => {
         setShownMovies([
@@ -49,17 +49,8 @@ function Movies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
             ),
         ]);
     };
-    useEffect(() => {
-        if (!isFirstRender.current) {
-            const savedMovies = JSON.parse(
-                localStorage.getItem("filteredMovies") || "[]"
-            );
-            if (savedMovies.length > 0) setMovies(savedMovies);
 
-            isFirstRender.current = true;
-        }
-    }, [movies]);
-
+    useGetMoviesHook(setMoviesFromApi);
 
     useEffect(() => {
         if (shownMovies.length === movies.length) {
@@ -100,9 +91,9 @@ function Movies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
         };
     }, []);
 
-    function setNewWidth() {
+    const setNewWidth = () => {
         setScreenWidth(window.innerWidth);
-    }
+    };
 
     return (
         <div className="movies">
@@ -113,6 +104,7 @@ function Movies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
                     handleIsLoading={setIsLoading}
                     setNothingFound={setNothingFound}
                     setShowSearchError={setShowSearchError}
+                    movies={moviesFromApi}
                 />
                 <MoviesCardList
                     movies={shownMovies}

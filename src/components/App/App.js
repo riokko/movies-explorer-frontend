@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory, useLocation } from "react-router-dom";
 
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -17,17 +17,21 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
-    const [likedMovies, setLikedMovies] = React.useState([]);
-    const [messageForForm, setMessageForForm] = React.useState("");
+    const [likedMovies, setLikedMovies] = useState([]);
+    const [messageForForm, setMessageForForm] = useState("");
 
     const history = useHistory();
     const token = localStorage.getItem("token");
-    function tokenCheck() {
+
+    const currentLocation = useLocation();
+    const path = currentLocation.pathname;
+
+    const tokenCheck = () => {
         if (!token) {
             return;
         }
         setLoggedIn(true);
-        history.push("/movies");
+        history.push(path);
         mainApi
             .getUserData(token)
             .then((res) => {
@@ -48,9 +52,9 @@ const App = () => {
             })
             // eslint-disable-next-line no-console
             .catch((e) => console.log(e));
-    }
+    };
 
-    function fetchLikedMovies() {
+    const fetchLikedMovies = () => {
         mainApi
             .getLikedMovies(token)
             .then((data) => {
@@ -60,7 +64,7 @@ const App = () => {
                 console.log(e);
                 setLikedMovies([]);
             });
-    }
+    };
 
     const firstRender = useRef(true);
     useEffect(() => {
@@ -70,11 +74,11 @@ const App = () => {
         }
     });
 
-    function handleRegister(name, email, password) {
+    const handleRegister = (name, email, password) => {
         return mainApi.register(name, email, password);
-    }
+    };
 
-    function handleLogin(email, password) {
+    const handleLogin = (email, password) => {
         mainApi
             .login(email, password)
             .then((data) => {
@@ -99,7 +103,7 @@ const App = () => {
                 }
             })
             .catch((e) => console.log(e));
-    }
+    };
 
     const updateUserData = ({ name, email }) => {
         mainApi
@@ -122,7 +126,7 @@ const App = () => {
     };
 
     return (
-        <CurrentUserContext.Provider value={currentUser}>
+        <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
             <div className="page__content">
                 <Switch>
                     <Route exact path="/signin">
@@ -142,7 +146,14 @@ const App = () => {
                         updateUserData={updateUserData}
                         message={messageForForm}
                         handleLogout={handleLogout}
-                        setCurrentUser={setCurrentUser}
+                    />
+                    <ProtectedRoute
+                        path="/saved-movies"
+                        component={SavedMovies}
+                        loggedIn={loggedIn}
+                        movies={likedMovies}
+                        setLikedMovies={setLikedMovies}
+                        fetchLikedMovies={fetchLikedMovies}
                     />
                     <ProtectedRoute
                         path="/movies"
@@ -153,22 +164,14 @@ const App = () => {
                         fetchLikedMovies={fetchLikedMovies}
                     />
                     <ProtectedRoute
-                        path="/saved-movies"
-                        component={SavedMovies}
-                        loggedIn={loggedIn}
-                        likedMovies={likedMovies}
-                        setLikedMovies={setLikedMovies}
-                        fetchLikedMovies={fetchLikedMovies}
-                    />
-                    <ProtectedRoute
+                        exact
                         path="/"
                         loggedIn={loggedIn}
                         component={Main}
                     />
-                    >
                     <Route>
                         {loggedIn ? (
-                            <Redirect to="/movies" />
+                            <Redirect to="/" />
                         ) : (
                             <Redirect to="/signin" />
                         )}

@@ -41,7 +41,6 @@ function MoviesCard({
         );
         setIsLiked(likedMovie.length > 0);
         setLikedMovie(likedMovie[0]);
-        console.log(isLiked, likedMovie, movie.id)
     }, [isLiked, likedMovies, movie.id]);
 
 

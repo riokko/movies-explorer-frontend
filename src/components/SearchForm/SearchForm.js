@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
-import moviesApi from "../../utils/MoviesApi";
 
 // TODO поиск корометражек
 
@@ -11,21 +10,23 @@ function SearchForm({
     handleIsLoading,
     setNothingFound,
     setShowSearchError,
+    movies,
 }) {
     const [inputValue, setInputValue] = useState("");
     const [showError, setShowError] = useState(false);
+    const [checkboxChecked, setCheckboxChecked] = useState(false);
     const inputRef = useRef();
+    const formRef = useRef(null);
 
-    const isFirstRender = useRef(false);
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
-        if (!isFirstRender.current) {
+        if (isFirstRender.current) {
             const savedInputValue = localStorage.getItem("searchInput") || [];
-
             if (savedInputValue.length > 0) setInputValue(savedInputValue);
-            isFirstRender.current = true;
+            isFirstRender.current = false;
         }
-    }, [inputValue]);
+    }, []);
 
     const filterSearch = (movie, searchText) => {
         // Возвращает true, если значение searchText есть в описании к фильму или в названиях
@@ -37,28 +38,25 @@ function SearchForm({
         );
     };
 
-    const fetchData = (searchText, loadingSetter) => {
-        moviesApi
-            .getMoviesListFromApi()
-            .then((movies) => {
-                const filteredMovies = movies.filter((movie) =>
-                    filterSearch(movie, inputValue)
-                );
-                setNothingFound(filteredMovies.length === 0);
-                localStorage.setItem(
-                    "filteredMovies",
-                    JSON.stringify(filteredMovies)
-                );
-                setMovies(filteredMovies);
-                loadingSetter(false);
-                setShowError(false);
-                setShowSearchError(false);
-            })
-            .catch((e) => {
-                console.log(e);
-                loadingSetter(false);
-                setShowSearchError(true);
-            });
+    const searchMovies = (searchText, loadingSetter) => {
+        let filteredMovies = movies.filter((movie) =>
+            filterSearch(movie, inputValue)
+        );
+
+        if (checkboxChecked) {
+            filteredMovies = filteredMovies.filter(
+                (movie) => movie.duration <= 40
+            );
+        }
+
+        if (filteredMovies.length === 0) {
+            setNothingFound(filteredMovies.length === 0);
+        }
+
+        setMovies(filteredMovies);
+        loadingSetter(false);
+        setShowError(false);
+        setShowSearchError(false);
     };
 
     const handleChange = (e) => {
@@ -73,7 +71,7 @@ function SearchForm({
         } else {
             handleIsLoading(true);
             localStorage.setItem("searchInput", inputValue); // поисковый запрос обновляется в локальном хранилище
-            fetchData(inputValue, handleIsLoading);
+            searchMovies(inputValue, handleIsLoading);
         }
     };
 
@@ -83,6 +81,7 @@ function SearchForm({
                 className="search-form__form"
                 onSubmit={handleSubmitSearchForm}
                 noValidate
+                ref={formRef}
             >
                 <div className="search-form__search-content">
                     <input
@@ -92,13 +91,17 @@ function SearchForm({
                         placeholder="Фильм"
                         id="movie"
                         required
-                        value={inputValue}
+                        // value={inputValue}
                         onChange={handleChange}
                     />
 
                     <button type="submit" className="search-form__button" />
                 </div>
-                <FilterCheckbox />
+                <FilterCheckbox
+                    setCheckboxChecked={setCheckboxChecked}
+                    checkboxChecked={checkboxChecked}
+                    form={formRef.current}
+                />
                 <span
                     className={classnames("search-form__error", {
                         "search-form__show-error": showError,

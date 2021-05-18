@@ -5,8 +5,6 @@ import Header from "../Header/Header";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useForm } from "react-hook-form";
 
-// TODO Исправить форвард страницы при сохранении данных
-
 const FORM_INPUTS = {
     name: "name",
     email: "email",
@@ -17,11 +15,9 @@ function Profile({
     updateUserData,
     message,
     handleLogout,
-    setCurrentUser,
 }) {
-    const currentUser = useContext(CurrentUserContext);
-    const [name, setName] = React.useState(currentUser.name);
-    const [email, setEmail] = React.useState(currentUser.email);
+    const {currentUser, setCurrentUser } = useContext(CurrentUserContext);
+    const  {email, name} = currentUser
     const [inEditing, setInEditing] = useState(false);
 
     const { register, handleSubmit, formState } = useForm({
@@ -38,12 +34,8 @@ function Profile({
         setInEditing(true);
     }
 
-    function onSubmit(data, e) {
-        e.preventDefault();
-        console.log(e);
-        const { name, email } = data;
-        updateUserData({ name, email });
-        setCurrentUser({ name, email });
+    function onSubmit(data) {
+        updateUserData(data);
     }
 
     useEffect(() => {
@@ -68,15 +60,16 @@ function Profile({
                         id="profile"
                         onSubmit={handleSubmit(onSubmit)}
                     >
-                        <label className="profile__label" htmlFor="name">
+                        <label className="profile__label">
                             Имя
                             <input
                                 disabled={!inEditing}
                                 className="profile__input"
                                 type="text"
                                 onChange={(e) => {
-                                    setName(e.target.value);
+                                    setCurrentUser({...currentUser, name: e.target.value})
                                 }}
+                                defaultValue={name}
                                 {...register(FORM_INPUTS.name, {
                                     required: {
                                         value: true,
@@ -96,15 +89,16 @@ function Profile({
                             </span>
                         )}
                         <hr className="profile__divider" />
-                        <label className="profile__label" htmlFor="email">
+                        <label className="profile__label">
                             E-mail
                             <input
                                 disabled={!inEditing}
                                 className="profile__input"
-                                type="text"
+                                type="email"
                                 onChange={(e) => {
-                                    setEmail(e.target.value);
+                                    setCurrentUser({...currentUser, email: e.target.value})
                                 }}
+                                defaultValue={email}
                                 {...register(FORM_INPUTS.email, {
                                     required: {
                                         value: true,
@@ -135,7 +129,7 @@ function Profile({
                                     disabled={buttonIsDisabled}
                                     form="profile"
                                     type="submit"
-                                    onSubmit={handleSubmit(onSubmit)}
+                                    // onSubmit={handleSubmit(onSubmit)}
                                 >
                                     Сохранить
                                 </button>
