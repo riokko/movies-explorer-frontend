@@ -67,7 +67,6 @@ function SearchForm({
     };
 
     const handleSubmitSearchForm = (e) => {
-        console.log();
         e.preventDefault();
         if (!inputRef.current.validity.valid) {
             setShowError(true);

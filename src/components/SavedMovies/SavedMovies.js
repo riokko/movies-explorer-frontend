@@ -5,8 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
-function SavedMovies({ loggedIn, likedMovies, setLikedMovies }) {
-    // TODO рендеринг сохраненных фильмов
+function SavedMovies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
 
     return (
         <div className="movies">
@@ -18,6 +17,7 @@ function SavedMovies({ loggedIn, likedMovies, setLikedMovies }) {
                     likedMovies={likedMovies}
                     setLikedMovies={setLikedMovies}
                     isSavedPage
+                    fetchLikedMovies={fetchLikedMovies}
                 />
                 <Footer />
             </Row>

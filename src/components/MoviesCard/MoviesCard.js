@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./MoviesCard.css";
 import classnames from "classnames";
-import noCover from "../../images/no-thumb.png";
-
-import { BASE_URL } from "../../utils/MoviesApi";
+// import noCover from "../../images/no-thumb.png";
+//
+// import { BASE_URL } from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
 
 function MoviesCard({
@@ -12,6 +12,7 @@ function MoviesCard({
     setLikedMovies,
     likedMovies,
     fetchLikedMovies,
+    image,
 }) {
     const {
         id,
@@ -20,12 +21,10 @@ function MoviesCard({
         duration,
         year,
         description,
-        image,
         trailerLink,
         nameRU,
         nameEN,
     } = movie;
-    const imageUrl = image ? `${BASE_URL}${image.url}` : noCover;
     const token = localStorage.getItem("token");
     const [isLiked, setIsLiked] = useState(false);
     const [likedMovie, setLikedMovie] = useState(null);
@@ -42,7 +41,9 @@ function MoviesCard({
         );
         setIsLiked(likedMovie.length > 0);
         setLikedMovie(likedMovie[0]);
+        console.log(isLiked, likedMovie, movie.id)
     }, [isLiked, likedMovies, movie.id]);
+
 
     function movieLike() {
         mainApi
@@ -54,7 +55,7 @@ function MoviesCard({
                     duration,
                     year,
                     description,
-                    image: imageUrl,
+                    image,
                     trailerLink,
                     nameRU,
                     nameEN,
@@ -62,17 +63,16 @@ function MoviesCard({
                 token
             )
             .then((res) => {
-                setIsLiked(true);
+                setIsLiked(isLiked);
                 setLikedMovies([...likedMovies, res]);
-                setLikedMovie(res[0])
+                setLikedMovie(res[0]);
             })
             .catch((err) => console.log(err));
     }
 
     function movieDislike() {
-        console.log(likedMovie);
         mainApi
-            .dislike(likedMovie._id, token)
+            .dislike(isSavedPage ? movie._id : likedMovie._id, token)
             .then(() => {
                 setIsLiked(false);
                 setLikedMovie(null);
@@ -82,7 +82,7 @@ function MoviesCard({
     }
 
     function handleLikeButton() {
-        if (isLiked) {
+        if (isSavedPage || isLiked) {
             movieDislike();
         } else {
             movieLike();
@@ -100,7 +100,7 @@ function MoviesCard({
                 <img
                     className="movies-card__thumbnail"
                     alt={nameRU}
-                    src={imageUrl}
+                    src={image}
                 />
             </a>
             <div className="movies-card__title">
