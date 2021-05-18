@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Switch, Route, Redirect, useHistory, useLocation } from "react-router-dom";
+import {
+    Switch,
+    Route,
+    Redirect,
+    useHistory,
+    useLocation,
+} from "react-router-dom";
 
 import mainApi from "../../utils/MainApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -106,14 +112,19 @@ const App = () => {
     };
 
     const updateUserData = ({ name, email }) => {
+        setMessageForForm('')
         mainApi
             .editUserData({ name, email }, token)
-            .then(() => {
+            .then((res) => {
+                if (res.status === 409) {
+                    return setMessageForForm("При обновлении профиля произошла ошибка");
+
+                }
                 tokenCheck();
+                setMessageForForm("Данные успешно обновлены");
             })
-            .catch(() => {
-                setMessageForForm("При обновлении профиля произошла ошибка");
-            });
+            .catch((e) => console.log(e)
+            );
     };
 
     const handleLogout = () => {
@@ -126,7 +137,7 @@ const App = () => {
     };
 
     return (
-        <CurrentUserContext.Provider value={{currentUser, setCurrentUser}}>
+        <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
             <div className="page__content">
                 <Switch>
                     <Route exact path="/signin">

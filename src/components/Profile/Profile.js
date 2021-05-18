@@ -129,7 +129,6 @@ function Profile({
                                     disabled={buttonIsDisabled}
                                     form="profile"
                                     type="submit"
-                                    // onSubmit={handleSubmit(onSubmit)}
                                 >
                                     Сохранить
                                 </button>
