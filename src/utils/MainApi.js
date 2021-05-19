@@ -1,6 +1,6 @@
-// const BASE_URL = "https://api.movie.nomoredomains.icu";
+const BASE_URL = "https://api.movie.nomoredomains.icu";
 
-const BASE_URL = "http://localhost:3001";
+// const BASE_URL = "http://localhost:3001";
 
 class MainApi {
     constructor({ url }) {
@@ -19,6 +19,7 @@ class MainApi {
             headers: {
                 "Content-Type": this._mimeType,
             },
+            credentials: "include",
             body: JSON.stringify({ name, email, password }),
         })
             .then((response) => {
@@ -39,6 +40,7 @@ class MainApi {
                 "Content-Type": this._mimeType,
             },
             body: JSON.stringify({ email, password }),
+            credentials: "include",
         })
             .then((response) => response)
             .catch((err) => {
@@ -53,6 +55,7 @@ class MainApi {
                 "Content-Type": this._mimeType,
                 Authorization: `Bearer ${token}`,
             },
+            credentials: "include",
         })
             .then((response) => response)
             .catch((err) => {
@@ -67,6 +70,7 @@ class MainApi {
                 "Content-Type": this._mimeType,
                 Authorization: `Bearer ${token}`,
             },
+            credentials: "include",
             body: JSON.stringify({ name, email }),
         })
             .then((response) => response)
@@ -80,6 +84,7 @@ class MainApi {
                 "Content-Type": this._mimeType,
                 Authorization: `Bearer ${token}`,
             },
+            credentials: "include",
         })
             .then((response) => response.json())
             .catch((e) => console.log(e));
@@ -92,6 +97,7 @@ class MainApi {
                 "Content-Type": this._mimeType,
                 Authorization: `Bearer ${token}`,
             },
+            credentials: "include",
             body: JSON.stringify({
                 movieId: movie.id,
                 country: movie.country,
@@ -123,6 +129,7 @@ class MainApi {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
+            credentials: "include",
         });
     }
 }
