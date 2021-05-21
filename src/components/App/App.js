@@ -112,27 +112,27 @@ const App = () => {
     };
 
     const updateUserData = ({ name, email }) => {
-        setMessageForForm('')
+        setMessageForForm("");
         mainApi
             .editUserData({ name, email }, token)
             .then((res) => {
                 if (res.status === 409) {
-                    return setMessageForForm("При обновлении профиля произошла ошибка");
-
+                    return setMessageForForm(
+                        "При обновлении профиля произошла ошибка"
+                    );
                 }
                 tokenCheck();
                 setMessageForForm("Данные успешно обновлены");
             })
-            .catch((e) => console.log(e)
-            );
+            .catch((e) => console.log(e));
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("jwt");
-        localStorage.removeItem("movies");
-        localStorage.removeItem("searchKey");
+        localStorage.removeItem("token");
+        localStorage.removeItem("moviesList");
+        localStorage.removeItem("searchInput");
         setLoggedIn(false);
-        history.push("/signin");
+        history.push("/");
         setCurrentUser({});
     };
 
@@ -140,6 +140,33 @@ const App = () => {
         <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
             <div className="page__content">
                 <Switch>
+                    <Route exact path="/">
+                        <Main loggedIn={loggedIn} />
+                    </Route>
+                    <ProtectedRoute
+                        exact path="/profile"
+                        component={Profile}
+                        loggedIn={loggedIn}
+                        updateUserData={updateUserData}
+                        message={messageForForm}
+                        handleLogout={handleLogout}
+                    />
+                    <ProtectedRoute
+                        exact path="/saved-movies"
+                        component={SavedMovies}
+                        loggedIn={loggedIn}
+                        movies={likedMovies}
+                        setLikedMovies={setLikedMovies}
+                        fetchLikedMovies={fetchLikedMovies}
+                    />
+                    <ProtectedRoute
+                        exact path="/movies"
+                        component={Movies}
+                        loggedIn={loggedIn}
+                        likedMovies={likedMovies}
+                        setLikedMovies={setLikedMovies}
+                        fetchLikedMovies={fetchLikedMovies}
+                    />
                     <Route exact path="/signin">
                         <Login handleLogin={handleLogin} />
                     </Route>
@@ -150,45 +177,15 @@ const App = () => {
                             setLoggedIn={setLoggedIn}
                         />
                     </Route>
-                    <ProtectedRoute
-                        path="/profile"
-                        component={Profile}
-                        loggedIn={loggedIn}
-                        updateUserData={updateUserData}
-                        message={messageForForm}
-                        handleLogout={handleLogout}
-                    />
-                    <ProtectedRoute
-                        path="/saved-movies"
-                        component={SavedMovies}
-                        loggedIn={loggedIn}
-                        movies={likedMovies}
-                        setLikedMovies={setLikedMovies}
-                        fetchLikedMovies={fetchLikedMovies}
-                    />
-                    <ProtectedRoute
-                        path="/movies"
-                        component={Movies}
-                        loggedIn={loggedIn}
-                        likedMovies={likedMovies}
-                        setLikedMovies={setLikedMovies}
-                        fetchLikedMovies={fetchLikedMovies}
-                    />
-                    <ProtectedRoute
-                        exact
-                        path="/"
-                        loggedIn={loggedIn}
-                        component={Main}
-                    />
+                    <Route path="*">
+                        <NotFound />
+                    </Route>
                     <Route>
                         {loggedIn ? (
                             <Redirect to="/" />
                         ) : (
                             <Redirect to="/signin" />
                         )}
-                    </Route>
-                    <Route path="*">
-                        <NotFound />
                     </Route>
                 </Switch>
             </div>
