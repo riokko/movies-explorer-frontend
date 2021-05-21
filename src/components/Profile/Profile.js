@@ -10,14 +10,9 @@ const FORM_INPUTS = {
     email: "email",
 };
 
-function Profile({
-    loggedIn,
-    updateUserData,
-    message,
-    handleLogout,
-}) {
-    const {currentUser, setCurrentUser } = useContext(CurrentUserContext);
-    const  {email, name} = currentUser
+function Profile({ loggedIn, updateUserData, message, handleLogout }) {
+    const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+    const { email, name } = currentUser;
     const [inEditing, setInEditing] = useState(false);
 
     const { register, handleSubmit, formState } = useForm({
@@ -67,7 +62,10 @@ function Profile({
                                 className="profile__input"
                                 type="text"
                                 onChange={(e) => {
-                                    setCurrentUser({...currentUser, name: e.target.value})
+                                    setCurrentUser({
+                                        ...currentUser,
+                                        name: e.target.value,
+                                    });
                                 }}
                                 defaultValue={name}
                                 {...register(FORM_INPUTS.name, {
@@ -96,7 +94,10 @@ function Profile({
                                 className="profile__input"
                                 type="email"
                                 onChange={(e) => {
-                                    setCurrentUser({...currentUser, email: e.target.value})
+                                    setCurrentUser({
+                                        ...currentUser,
+                                        email: e.target.value,
+                                    });
                                 }}
                                 defaultValue={email}
                                 {...register(FORM_INPUTS.email, {
