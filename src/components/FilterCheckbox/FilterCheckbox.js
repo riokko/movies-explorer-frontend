@@ -16,18 +16,16 @@ function FilterCheckbox({ checkboxChecked, setCheckboxChecked, form }) {
     }, [checkboxChecked]);
 
     return (
-        <>
-            <label className="search-form__filter" htmlFor="filter">
-                <input
-                    id="filter"
-                    className="search-form__checkbox"
-                    type="checkbox"
-                    checked={checkboxChecked}
-                    onChange={handleCheck}
-                />
-                Короткометражки
-            </label>
-        </>
+        <label className="search-form__filter" htmlFor="filter">
+            <input
+                id="filter"
+                className="search-form__checkbox"
+                type="checkbox"
+                checked={checkboxChecked}
+                onChange={handleCheck}
+            />
+            Короткометражки
+        </label>
     );
 }
 
