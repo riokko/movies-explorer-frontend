@@ -91,6 +91,13 @@ function Movies({ loggedIn, likedMovies, setLikedMovies, fetchLikedMovies }) {
         };
     }, []);
 
+    useEffect(() => {
+        const savedFilteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
+        if (savedFilteredMovies) {
+            setMovies(savedFilteredMovies);
+        }
+    }, [])
+
     const setNewWidth = () => {
         setScreenWidth(window.innerWidth);
     };

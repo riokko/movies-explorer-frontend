@@ -3,8 +3,6 @@ import classnames from "classnames";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
-// TODO поиск корометражек
-
 function SearchForm({
     setMovies,
     handleIsLoading,
@@ -54,6 +52,7 @@ function SearchForm({
         }
 
         setMovies(filteredMovies);
+        localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
         loadingSetter(false);
         setShowError(false);
         setShowSearchError(false);
@@ -91,7 +90,6 @@ function SearchForm({
                         placeholder="Фильм"
                         id="movie"
                         required
-                        // value={inputValue}
                         onChange={handleChange}
                     />
 
