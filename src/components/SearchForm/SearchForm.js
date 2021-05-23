@@ -5,9 +5,9 @@ import "./SearchForm.css";
 
 function SearchForm({
     setMovies,
-    handleIsLoading,
-    setNothingFound,
-    setShowSearchError,
+    handleIsLoading = () => {},
+    setNothingFound = () => {},
+    setShowSearchError = () => {},
     movies,
 }) {
     const [inputValue, setInputValue] = useState("");
@@ -36,7 +36,7 @@ function SearchForm({
         );
     };
 
-    const searchMovies = (searchText, loadingSetter) => {
+    const searchMovies = () => {
         let filteredMovies = movies.filter((movie) =>
             filterSearch(movie, inputValue)
         );
@@ -53,7 +53,7 @@ function SearchForm({
 
         setMovies(filteredMovies);
         localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
-        loadingSetter(false);
+        handleIsLoading(false);
         setShowError(false);
         setShowSearchError(false);
     };
@@ -70,7 +70,7 @@ function SearchForm({
         } else {
             handleIsLoading(true);
             localStorage.setItem("searchInput", inputValue); // поисковый запрос обновляется в локальном хранилище
-            searchMovies(inputValue, handleIsLoading);
+            searchMovies();
         }
     };
 
@@ -90,6 +90,7 @@ function SearchForm({
                         placeholder="Фильм"
                         id="movie"
                         required
+                        // value={inputValue}
                         onChange={handleChange}
                     />
 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./MoviesCard.css";
 import classnames from "classnames";
-// import noCover from "../../images/no-thumb.png";
-//
-// import { BASE_URL } from "../../utils/MoviesApi";
+
 import mainApi from "../../utils/MainApi";
 
 function MoviesCard({
@@ -37,11 +35,11 @@ function MoviesCard({
 
     useEffect(() => {
         const likedMovie = likedMovies.filter(
-            (likedMovie) => likedMovie.movieId === movie.id
+            (likedMovie) => likedMovie.movieId === id
         );
         setIsLiked(likedMovie.length > 0);
         setLikedMovie(likedMovie[0]);
-    }, [isLiked, likedMovies, movie.id]);
+    }, [isLiked, likedMovies, id]);
 
 
     function movieLike() {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Row from "../Row";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -6,7 +6,10 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 function SavedMovies({ loggedIn, movies, setLikedMovies, fetchLikedMovies }) {
-    const [moviesList, setMoviesList] = useState(movies);
+    const [moviesList, setMoviesList] = useState([]);
+    useEffect(() => {
+        setMoviesList(movies)
+    }, [movies])
 
     return (
         <div className="movies">
@@ -15,13 +18,10 @@ function SavedMovies({ loggedIn, movies, setLikedMovies, fetchLikedMovies }) {
                 <SearchForm
                     movies={movies}
                     setMovies={setMoviesList}
-                    handleIsLoading={() => {}}
-                    setNothingFound={() => {}}
-                    setShowSearchError={() => {}}
                 />
                 <MoviesCardList
                     movies={moviesList}
-                    likedMovies={movies}
+                    likedMovies={moviesList}
                     setLikedMovies={setLikedMovies}
                     isSavedPage
                     fetchLikedMovies={fetchLikedMovies}

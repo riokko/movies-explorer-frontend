@@ -11,7 +11,7 @@ function MoviesCardList({
     likedMovies,
     fetchLikedMovies,
 }) {
-    if (!movies) {
+    if (movies.length === 0) {
         return null;
     }
 
