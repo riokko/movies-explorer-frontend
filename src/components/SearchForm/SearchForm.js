@@ -1,26 +1,78 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import classnames from "classnames";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
-function SearchForm({ fetchData }) {
+function SearchForm({
+    setMovies,
+    handleIsLoading = () => {},
+    setNothingFound = () => {},
+    setShowSearchError = () => {},
+    movies,
+}) {
+    const [inputValue, setInputValue] = useState("");
+    const [showError, setShowError] = useState(false);
+    const [checkboxChecked, setCheckboxChecked] = useState(false);
+    const inputRef = useRef();
+    const formRef = useRef(null);
 
-    function handleSubmitSearchForm(e) {
-        e.preventDefault();
-        if (!isValid(e.target)) {
-            e.target
-                .querySelector(".search-form__error")
-                .classList.add("search-form__show-error");
-        } else {
-            e.target
-                .querySelector(".search-form__error")
-                .classList.remove("search-form__show-error");
-            fetchData();
+    const isFirstRender = useRef(true);
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            const savedInputValue = localStorage.getItem("searchInput") || [];
+            if (savedInputValue.length > 0) setInputValue(savedInputValue);
+            isFirstRender.current = false;
         }
-    }
+    }, []);
 
-    function isValid(form) {
-        return form.querySelector(".search-form__input").validity.valid;
-    }
+    const filterSearch = (movie, searchText) => {
+        // Возвращает true, если значение searchText есть в описании к фильму или в названиях
+        const regex = new RegExp(searchText, "gi");
+        return (
+            regex.test(movie.description) ||
+            regex.test(movie.nameRU) ||
+            regex.test(movie.nameEN)
+        );
+    };
+
+    const searchMovies = () => {
+        let filteredMovies = movies.filter((movie) =>
+            filterSearch(movie, inputValue)
+        );
+
+        if (checkboxChecked) {
+            filteredMovies = filteredMovies.filter(
+                (movie) => movie.duration <= 40
+            );
+        }
+
+        if (filteredMovies.length === 0) {
+            setNothingFound(filteredMovies.length === 0);
+        }
+
+        setMovies(filteredMovies);
+        localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
+        handleIsLoading(false);
+        setShowError(false);
+        setShowSearchError(false);
+    };
+
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+        setShowError(false);
+    };
+
+    const handleSubmitSearchForm = (e) => {
+        e.preventDefault();
+        if (!inputRef.current.validity.valid) {
+            setShowError(true);
+        } else {
+            handleIsLoading(true);
+            localStorage.setItem("searchInput", inputValue); // поисковый запрос обновляется в локальном хранилище
+            searchMovies();
+        }
+    };
 
     return (
         <div className="search-form">
@@ -28,20 +80,33 @@ function SearchForm({ fetchData }) {
                 className="search-form__form"
                 onSubmit={handleSubmitSearchForm}
                 noValidate
+                ref={formRef}
             >
                 <div className="search-form__search-content">
                     <input
+                        ref={inputRef}
                         type="text"
                         className="search-form__input"
                         placeholder="Фильм"
                         id="movie"
                         required
+                        // value={inputValue}
+                        onChange={handleChange}
                     />
 
                     <button type="submit" className="search-form__button" />
                 </div>
-                <FilterCheckbox />
-                <span className="search-form__error" id="movie-error">
+                <FilterCheckbox
+                    setCheckboxChecked={setCheckboxChecked}
+                    checkboxChecked={checkboxChecked}
+                    form={formRef.current}
+                />
+                <span
+                    className={classnames("search-form__error", {
+                        "search-form__show-error": showError,
+                    })}
+                    id="movie-error"
+                >
                     Нужно ввести ключевое слово
                 </span>
             </form>

@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FormPage from "../FormPage/FormPage";
+import { useForm } from "react-hook-form";
 
-function Register() {
+const FORM_INPUTS = {
+    name: "name",
+    email: "email",
+    password: "password",
+};
+
+function Register({ handleRegister, handleLogin }) {
+    const { register, handleSubmit, formState } = useForm({
+        mode: "onChange",
+    });
+    const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+    const { errors } = formState;
+
+    function onSubmit(data) {
+        const { name, email, password } = data;
+        handleRegister(name, email, password).then(() => {
+            handleLogin(email, password);
+        });
+    }
+
+    useEffect(() => {
+        setButtonIsDisabled(
+            !(
+                formState.isValid &&
+                Object.values(FORM_INPUTS).every((input) =>
+                    Object.keys(formState.touchedFields).includes(input)
+                )
+            )
+        );
+    }, [formState]);
+
     return (
         <FormPage
             title={"Добро пожаловать!"}
@@ -9,6 +40,8 @@ function Register() {
             underButtonText={"Уже зарегистрированы?"}
             underButtonLink={"/signin"}
             underButtonTextLink={"Войти"}
+            handleSubmit={handleSubmit(onSubmit)}
+            buttonIsDisabled={buttonIsDisabled}
         >
             <label htmlFor="name" className="form-page__label">
                 Имя
@@ -16,12 +49,24 @@ function Register() {
                     type="text"
                     className="form-page__input"
                     placeholder="Виталий"
-                    id="reg-name"
-                    required
+                    name="name"
+                    {...register(FORM_INPUTS.name, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        pattern: {
+                            value: /^[а-яёa-z\s-]+$/i,
+                            message:
+                                "Поле имя может содержать только буквы или дефис",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="reg-name-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.name] && (
+                    <span className="form-page__error">
+                        {errors[FORM_INPUTS.name].message}
+                    </span>
+                )}
             </label>
 
             <label htmlFor="email" className="form-page__label">
@@ -30,12 +75,22 @@ function Register() {
                     type="email"
                     className="form-page__input"
                     placeholder="pochta@yandex.ru"
-                    id="reg-email"
-                    required
+                    {...register(FORM_INPUTS.email, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "Введите корректный адрес электронной почты",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="reg-email-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.email] && (
+                    <span className="form-page__error">
+                        {errors[FORM_INPUTS.email].message}
+                    </span>
+                )}
             </label>
 
             <label htmlFor="password" className="form-page__label">
@@ -43,15 +98,26 @@ function Register() {
                 <input
                     type="password"
                     className="form-page__input"
-                    id="reg-password"
                     autoComplete="on"
                     placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-                    required
-                    minLength="8"
+                    name="password"
+                    {...register(FORM_INPUTS.password, {
+                        required: {
+                            value: true,
+                            message: "Поле не может быть пустым",
+                        },
+                        minLength: {
+                            value: 6,
+                            message:
+                                "Пароль должен содержать не менее 6 символов",
+                        },
+                    })}
                 />
-                <span className="form-page__error" id="reg-password-error">
-                    {" "}
-                </span>
+                {errors[FORM_INPUTS.password] && (
+                    <span className="form-page__error">
+                        {errors[FORM_INPUTS.password].message}
+                    </span>
+                )}
             </label>
         </FormPage>
     );
